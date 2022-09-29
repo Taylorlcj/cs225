@@ -3,8 +3,6 @@
 // Author: Taylor Jensen
 // Date Created: Sep 29, 2022
 // Attributes: None
-//
-// Methods: +main( String[] ): void - Performs all the work required in the HW.
 //********************************************************
 import java.util.Scanner;
 public class YourSurfaceAreaCalculator {
