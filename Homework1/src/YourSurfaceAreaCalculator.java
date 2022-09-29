@@ -1,9 +1,12 @@
-//*******************************************************
-//Class: YourSurfaceAreaCalculator
-// Author: Taylor Jensen
-// Date Created: Sep 29, 2022
-// Attributes: None
-//********************************************************
+/*
+*******************************************************
+Class: YourSurfaceAreaCalculator
+ Author: Taylor Jensen
+ Date Created: Sep 29, 2022
+ Attributes: None
+********************************************************
+*/
+
 import java.util.Scanner;
 public class YourSurfaceAreaCalculator {
     public static void main( String[] args ) {
