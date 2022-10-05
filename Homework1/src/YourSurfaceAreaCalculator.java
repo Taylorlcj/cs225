@@ -1,6 +1,6 @@
 /*
 *******************************************************
-Class: YourSurfaceAreaCalculator
+ Class: YourSurfaceAreaCalculator
  Author: Taylor Jensen
  Date Created: Sep 29, 2022
  Attributes: None
