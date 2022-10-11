@@ -37,6 +37,7 @@ public class PrizeBoxes {
     }
     public void setAllBoxes(int value){
         for (int i = 0; i < prizes.length; i++) {
+
             prizes[i] = value;
         }
     }
