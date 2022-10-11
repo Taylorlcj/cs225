@@ -18,11 +18,11 @@ public class GameController {
         Scanner input = new Scanner(System.in);
         int total = 0;
         for (int i = 0; i<5; i++){
-            System.out.println("Please choose a box");
-            int choice = input.nextInt();
+            System.out.println("Please choose a box between and including 1 and 30");
+            int choice = input.nextInt() - 1;
             total += prizes.getPrize(choice);
-            System.out.println(prizes.getPrize(choice));
+            System.out.println("Your prize is: " + prizes.getPrize(choice));
         }
-        System.out.println(total);
+        System.out.println("Your grand total is " + total);
     }
 }
