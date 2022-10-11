@@ -19,4 +19,10 @@ public class PrizeBoxes {
         index = (int) Math.floor(prizes.length * Math.random());
         prizes[index] = -100;
     }
+    public int[] getPrizes(){
+        return prizes;
+    }
+    public void setPrizes(int[] p){
+        prizes = p;
+    }
 }
