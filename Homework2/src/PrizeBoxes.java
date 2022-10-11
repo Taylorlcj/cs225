@@ -19,10 +19,20 @@ public class PrizeBoxes {
         index = (int) Math.floor(prizes.length * Math.random());
         prizes[index] = -100;
     }
+    //getter for the entire array
     public int[] getPrizes(){
         return prizes;
     }
+    //setter for the entire array
     public void setPrizes(int[] p){
         prizes = p;
+    }
+    //getter for a specific element
+    public int getPrize(int index){
+        return prizes[index];
+    }
+    //setter for specific element
+    public void setPrize(int index, int num){
+            prizes[index] = num;
     }
 }
