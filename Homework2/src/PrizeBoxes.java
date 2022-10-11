@@ -35,4 +35,9 @@ public class PrizeBoxes {
     public void setPrize(int index, int num){
             prizes[index] = num;
     }
+    public void setAllBoxes(int value){
+        for (int i = 0; i < prizes.length; i++) {
+            prizes[i] = value;
+        }
+    }
 }
