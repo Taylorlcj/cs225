@@ -75,8 +75,7 @@ public class Game {
 
         } else if (choice == 2) {
             playerHP = playerHP - 1;
-            System.out.println(
-                    "Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You receive 1 damage)\n");
+            System.out.println("Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You receive 1 damage)\n");
             System.out.println("Your HP: " + playerHP);
             System.out.println("\nPress [ENTER] to return to save point!\n");
             enterScanner.nextLine();
