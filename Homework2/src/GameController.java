@@ -31,7 +31,7 @@ public class GameController {
         System.out.println("Your grand total is " + total + "\n");
 
 
-
+        //Test case 1
         total = 0;
         prizes.setAllBoxes(101);
         System.out.println("At least one box has a value greater than 100");
@@ -49,7 +49,7 @@ public class GameController {
         System.out.println("Your grand total is " + total + "\n");
 
 
-
+        //Test case 2
         total = 0;
         prizes.setAllBoxes(50);
         System.out.println("There are no boxes that have a value of -100");
