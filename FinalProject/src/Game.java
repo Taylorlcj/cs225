@@ -43,13 +43,12 @@ public class Game {
 
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("You are at the gate of the town.");
-        System.out.println("A guard is standing in front of you.");
-        System.out.println("");
-        System.out.println("What do you want to do?");
-        System.out.println("");
+        System.out.println("A guard is standing in front of you.\n");
+        System.out.println("What do you want to do?\n");
         System.out.println("1: Talk to the guard");
         System.out.println("2: Attack the guard");
         System.out.println("3: Leave");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -60,6 +59,7 @@ public class Game {
             System.out.println("1: Talk to the guard");
             System.out.println("2: Attack the guard");
             System.out.println("3: Leave");
+            System.out.println("Any non integer: Give up");
             System.out.println("\n------------------------------------------------------------------\n");
             choice = myScanner.nextInt();
         }
@@ -95,6 +95,7 @@ public class Game {
         System.out.println("2: Go east");
         System.out.println("3: Go south");
         System.out.println("4: Go west");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -119,6 +120,7 @@ public class Game {
         playerHP = playerHP + 1;
         System.out.println("Your HP: " + playerHP);
         System.out.println("\n\n1: Go back to the crossroad");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -136,6 +138,7 @@ public class Game {
         playerWeapon = "Long Sword";
         System.out.println("Your Weapon: " + playerWeapon);
         System.out.println("\n\n1: Go back to the crossroad");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -152,6 +155,7 @@ public class Game {
         System.out.println("You encounter a goblin!\n");
         System.out.println("1: Fight");
         System.out.println("2: Run");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -171,6 +175,7 @@ public class Game {
         System.out.println("Monster HP: " + monsterHP);
         System.out.println("\n1: Attack");
         System.out.println("2: Run");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -233,8 +238,9 @@ public class Game {
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("You killed the monster!");
         System.out.println("The monster dropped a ring!");
-        System.out.println("You obtaind a silver ring!\n\n");
+        System.out.println("You obtained a silver ring!\n\n");
         System.out.println("1: Go east");
+        System.out.println("Any non integer: Give up");
         System.out.println("\n------------------------------------------------------------------\n");
 
         silverRing = 1;
