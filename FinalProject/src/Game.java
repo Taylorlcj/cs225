@@ -54,12 +54,21 @@ public class Game {
 
         choice = myScanner.nextInt();
 
+        while(choice < 1 || choice >3){
+            System.out.println("\n------------------------------------------------------------------\n");
+            System.out.println("You entered an invalid value, please try again!");
+            System.out.println("1: Talk to the guard");
+            System.out.println("2: Attack the guard");
+            System.out.println("3: Leave");
+            System.out.println("\n------------------------------------------------------------------\n");
+            choice = myScanner.nextInt();
+        }
+
         if (choice == 1) {
             if (silverRing == 1) {
                 ending();
             } else {
-                System.out.println("Guard: Hello there, stranger. So your name is " + playerName
-                        + "? \nSorry but we cannot let stranger enter our town.");
+                System.out.println("Guard: Hello there, stranger. So your name is " + playerName + "? \nSorry but we cannot let stranger enter our town. \n\nGAME OVER! Press [ENTER] to return to save point!");
                 enterScanner.nextLine();
                 townGate();
             }
@@ -69,6 +78,7 @@ public class Game {
             System.out.println(
                     "Guard: Hey don't be stupid.\n\nThe guard hit you so hard and you gave up.\n(You receive 1 damage)\n");
             System.out.println("Your HP: " + playerHP);
+            System.out.println("\nPress [ENTER] to return to save point!\n");
             enterScanner.nextLine();
             townGate();
         } else if (choice == 3) {
