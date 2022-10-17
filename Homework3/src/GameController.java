@@ -38,6 +38,14 @@ public class GameController {
                 System.out.println("Tile (" + row  + "," + col + ") " + maze[row][col].printStatus());
             }
         }
+        int x = 0;
+        int y = (maze.length - 1) / 2;
+        int p = maze.length - 1;
+        int q = (maze.length - 1) / 2;
+
+        System.out.print("There are "  + maze.length + " rows and columns in the Maze.");
+        System.out.printf(" Start is at (%d, %d), and Goal is at (%d, %d).\n", x,y,p,q);
+
     }
 
 }
