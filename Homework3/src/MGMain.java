@@ -13,7 +13,7 @@ public class MGMain {
     public static void main(String[] args)
     {
         GameController game = new GameController();
-        game.createMaze(3);
+        game.createMaze(5);
         game.printSummary();
     }
 }
