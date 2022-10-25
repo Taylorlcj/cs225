@@ -1,97 +1,57 @@
-/*
-*******************************************************
- Class: GenericTile
- Author: Taylor Jensen
- Date Created: Oct 16, 2022
- Purpose: Creating a single tile for the board
- Attributes: exits: Boolean[4], description: string
- Method: enterAction(): void , exitAction(): void , specialAction(): void
-********************************************************
-*/
-import java.lang.Math;
+//***********************************************
+// Class: GenericTile
+// Author: Keith Garfield
+// Created: October 16, 2022
+// Modified:
+//
+// Attributes: -exits: boolean[4] - An array of length 4 [N, E, E, S, W]
+//                                  #f = locked, #t = unlocked
+//
+// Methods: +enterAction: void - Performs an action when an agent enters
+//          +exitAction: void - Performs an action when the agent exits
+//          +specialAction: void - Performs an action randomly (probability tbd)
+//
+// Specialized setters and getters:
+//          +setAllExitsValue( boolean ): void - Sets all exits to true or false.
+//          +setAllExitsRandom(): void - sets all exits randomly (50/50 true or false)
+//
+//***********************************************
 public class GenericTile {
-    private boolean[] exits;
+    private boolean[] exits = new boolean[4];
     private String description;
-
-    //
-    public GenericTile(){
-        exits = new boolean[4];
-        for (int i = 0; i < 4; i++)
-        {
-            int choice = (int) Math.floor(2 * Math.random());
-            if(choice == 1)
-            {
-                exits[i] = true;
-            }
-        }
+    // ***** Methods *****
+    public void enterAction() {
+        System.out.println("GenericTile: enterAction method not defined.");
     }
-
-    public void enterAction(){
-
+    public void exitAction() {
+        System.out.println("GenericTile: exitAction method not defined.");
     }
-    public void exitAction(){
-
+    public void specialAction() {
+        System.out.println("GenericTile: specialAction method not defined.");
     }
-    public void specialAction(){
-
+    // ***** Setters and Getters *****
+    public boolean getSingleExit( int direction ) {
+        return exits[direction];
     }
-
-    //setter for Description
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    //getter for getDescription
-    public String getDescription() {
-        return description;
-    }
-
-    //setter for Exits
-    public void setExits(boolean[] exits) {
-        this.exits = exits;
-    }
-
-    //getter for Exits
-    public boolean[] getExits() {
+    public boolean[] getAllExits() {
         return exits;
     }
-
-    public String printStatus()
-    {
-        String printStatus = "(N, S, E, W) status: (";
-        if(exits[0] == true)
-        {
-           printStatus += "U,";
+    public void setSingleExit( int direction, boolean lockStatus ) {
+        exits[ direction ] = lockStatus;
+    }
+    public void setAllExitsValue( boolean lockStatus ) {
+        for (int i = 0; i < exits.length; i++) {
+            exits[i] = lockStatus;
         }
-        else
-        {
-            printStatus += "L,";
+    }
+    public void setAllExitsRandom( ) {
+        for (int i = 0; i < exits.length; i++) {
+            if (Math.random() > 0.5) {
+                exits[i] = true;
+            } else {
+                exits[i] = false;
+            }
         }
-        if(exits[1] == true)
-        {
-            printStatus += "U,";
-        }
-        else
-        {
-            printStatus += "L,";
-        }
-        if(exits[2] == true)
-        {
-            printStatus += "U,";
-        }
-        else
-        {
-            printStatus += "L,";
-        }
-        if(exits[3] == true)
-        {
-            printStatus += "U)";
-        }
-        else
-        {
-            printStatus += "L)";
-        }
-        return printStatus;
     }
 }
 
