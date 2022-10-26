@@ -46,8 +46,8 @@ public class GameController {
     public void printMazeSummary() {
         int cols = maze.length;
         System.out.print("There are " + cols + " rows and columns in the maze. ");
-        System.out.print("Start is at (0, " + (cols - 1)/2 + ") ");
-        System.out.println("and Goal is at (" + (cols - 1) + ", " + (cols-1)/2 + ").");
+        System.out.print("Start is at (" + (cols - 1)/2 + ", 0), ");
+        System.out.println("and Goal is at (" + (cols - 1)/2 + ", " + (cols-1) + ").");
     }
     public String convertExitsToString( int row, int col ) {
         boolean[] exits = maze[row][col].getAllExits();

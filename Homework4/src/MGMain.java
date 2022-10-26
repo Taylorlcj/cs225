@@ -29,12 +29,12 @@ public class MGMain {
         if ( rows != cols ) {
             legality = false;
             System.out.println("The maze does not have an equal number of rows and columns.");
-                    System.out.println("The maze will not be created.");
+            System.out.println("The maze will not be created.");
         }
         if ( rows%2 != 1 ) {
             legality = false;
             System.out.println("The maze does not have an odd number of rows and columns.");
-                    System.out.println("The maze will not be created.");
+            System.out.println("The maze will not be created.");
         }
         return legality;
     }
