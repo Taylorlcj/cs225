@@ -70,7 +70,24 @@ public class GameController {
     public void placeAgent()
     {
         player  = new GenericAgent();
-        player.setCurrentTile(maze[0][(maze.length-1)/2]);
+        playerLocation[0] = (maze.length-1)/2;
+        playerLocation[1] = 0;
+        player.setCurrentTile(maze[playerLocation[0]][playerLocation[1]]);
+    }
+
+    private GenericTile[][] grabNeighbor(){
+
+        GenericTile[][] tiles = new GenericTile[3][3];
+
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col <3; col++)
+
+            {
+                tiles[row][col] = maze[playerLocation[0]-1 + row][playerLocation[1]-1 + col];
+            }
+        }
+        return tiles;
     }
 
 // ***** Setters and Getters *****
