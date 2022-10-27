@@ -4,7 +4,7 @@
 // Created: October 16, 2022
 // Modified:
 //
-// Attributes: -exits: boolean[4] - An array of length 4 [N, E, E, S, W]
+// Attributes: -exits: boolean[4] - An array of length 4 [N, E, S, W]
 //                                  #f = locked, #t = unlocked
 //
 // Methods: +enterAction: void - Performs an action when an agent enters

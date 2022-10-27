@@ -1,7 +1,7 @@
 //***********************************************
 // Class: MGMain
 // Author: Keith Garfield
-// Created: October 16, 2022
+// Created: October 16, ,2022
 // Modified: Taylor Jensen
 //
 // Attributes: +ctrl: GameController - Sets up and executes the game.
@@ -9,6 +9,7 @@
 // Methods: +main(String[]): void - Creates the GameController object and begins the game.
 //          +createMaze(int, int): void - Checks for legality of maze, requests controller to create the maze
 //          +isMazeLegal(int, int): boolean - Returns true iff maze is n-by-n and n is odd.
+//          +createAgent()
 //
 //***********************************************
 public class MGMain {
@@ -17,6 +18,8 @@ public class MGMain {
     public static void main( String[] args ){
         MGMain me = new MGMain();
         me.createMaze(5, 5);
+        me.createAgent();
+        me.playGame();
     }
     public void createMaze(int rows, int cols) {
         if (isMazeLegal(rows, cols) ) {
@@ -37,6 +40,16 @@ public class MGMain {
             System.out.println("The maze will not be created.");
         }
         return legality;
+    }
+
+    public void createAgent()
+    {
+        ctrl.placeAgent();
+    }
+
+    public void playGame()
+    {
+        ctrl.playGame();
     }
 // ***** Setters and Getters *****
 }

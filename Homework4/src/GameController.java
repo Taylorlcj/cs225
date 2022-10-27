@@ -13,6 +13,8 @@
 //          +printMaze: void - Prints the door status of every tile in the maze.
 //          +printMazeSummary: void - Prints the maze size, identifies Start and Goal tiles.
 //          +convertExitsToString: String - Utility method to compose a string from status of tile doors.
+//          -grabNeighbor
+//          +placeAgent
 //
 //***********************************************
 public class GameController {
@@ -73,6 +75,8 @@ public class GameController {
         playerLocation[0] = (maze.length-1)/2;
         playerLocation[1] = 0;
         player.setCurrentTile(maze[playerLocation[0]][playerLocation[1]]);
+        player.setNeighborhood(grabNeighbor());
+        turnCounter = 0;
     }
 
     private GenericTile[][] grabNeighbor(){
@@ -82,14 +86,50 @@ public class GameController {
         for (int row = 0; row < 3; row++)
         {
             for (int col = 0; col <3; col++)
-
             {
-                tiles[row][col] = maze[playerLocation[0]-1 + row][playerLocation[1]-1 + col];
+                if ((playerLocation[0]-1 + row) >= 0 && (playerLocation[1]-1 + col) >= 0 && (playerLocation[0]-1 + row) <maze.length && (playerLocation[1]-1 + col) <maze.length)
+                {
+                    tiles[row][col] = maze[playerLocation[0]-1 + row][playerLocation[1]-1 + col];
+                }
             }
         }
         return tiles;
     }
 
+    public void playGame()
+    {
+        while(turnCounter < 50 && (playerLocation[0] != (maze.length - 1)/2 || playerLocation[1] != maze.length - 1))
+        {
+            movePlayer(player.move());
+            turnCounter += 1;
+        }
+        if (playerLocation[0] == (maze.length - 1)/2 && playerLocation[1] == maze.length - 1)
+        {
+            System.out.println("The agent has reached the goal line!");
+        }
+    }
+
+    private void movePlayer(char direction)
+    {
+        if (direction == 'N')
+        {
+            playerLocation[0] -= 1;
+        }
+        else if (direction == 'E')
+        {
+            playerLocation[1] += 1;
+        }
+        else if (direction == 'S')
+        {
+            playerLocation[0] += 1;
+        }
+        else
+        {
+            playerLocation[1] -= 1;
+        }
+        player.setCurrentTile(maze[playerLocation[0]][playerLocation[1]]);
+        player.setNeighborhood(grabNeighbor());
+    }
 // ***** Setters and Getters *****
 
 }
