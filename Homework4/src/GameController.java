@@ -30,7 +30,7 @@ public class GameController {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 maze[i][j] = new GenericTile();
-                maze[i][j].setAllExitsValue( true );
+                maze[i][j].setAllExitsRandom();
             }
         }
     }
@@ -48,8 +48,8 @@ public class GameController {
     public void printMazeSummary() {
         int cols = maze.length;
         System.out.print("There are " + cols + " rows and columns in the maze. ");
-        System.out.print("Start is at (" + (cols - 1)/2 + ", 0), ");
-        System.out.println("and Goal is at (" + (cols - 1)/2 + ", " + (cols-1) + ").");
+        System.out.print("Start is at (0, " + (cols - 1)/2 + ") ");
+        System.out.println("and Goal is at (" + (cols - 1) + ", " + (cols-1)/2 + ").");
     }
     public String convertExitsToString( int row, int col ) {
         boolean[] exits = maze[row][col].getAllExits();
@@ -100,12 +100,23 @@ public class GameController {
     {
         while(turnCounter < 50 && (playerLocation[0] != (maze.length - 1)/2 || playerLocation[1] != maze.length - 1))
         {
+            char direction = player.move();
+            if(direction == 'X')
+            {
+                System.out.println("Agent is stuck!");
+                return;
+            }
             movePlayer(player.move());
+            System.out.println("Agent is at (" + playerLocation[0] + ", "  + playerLocation[1] + ")");
             turnCounter += 1;
         }
         if (playerLocation[0] == (maze.length - 1)/2 && playerLocation[1] == maze.length - 1)
         {
             System.out.println("The agent has reached the goal line!");
+        }
+        else
+        {
+            System.out.println("This agent failed and is trash!");
         }
     }
 

@@ -18,51 +18,57 @@ public class GenericAgent
     {
         char direction = ' ';
         boolean done = false;
+        boolean[] attempted= new boolean[4];
 
         while(!done){
             int choice = (int)(Math.random() * 4);
-
+            attempted[choice] = true;
+            if (attempted[0] ==true && attempted[1] ==true && attempted[2] ==true && attempted[3] ==true)
+            {
+                done = true;
+                direction = 'X';
+            }
             if(choice == 0)
             {
-                direction = 'N';
                 if (neighborhood[0][1] != null)
                 {
                     if(currentTile.getSingleExit(choice))
                     {
                         done = true;
+                        direction = 'N';
                     }
                 }
             }
             else if(choice == 1)
             {
-                direction = 'E';
                 if (neighborhood[1][2] != null)
                 {
                     if(currentTile.getSingleExit(choice))
                     {
                         done = true;
+                        direction = 'E';
                     }
                 }
             }
             else if(choice == 2)
             {
-                direction = 'S';
                 if (neighborhood[2][1] != null)
                 {
                     if(currentTile.getSingleExit(choice))
                     {
                         done = true;
+                        direction = 'S';
                     }
                 }
             }
             else
             {
-                direction = 'W';
                 if (neighborhood[1][0] != null)
                 {
                     if(currentTile.getSingleExit(choice))
                     {
                         done = true;
+                        direction = 'W';
                     }
                 }
             }
