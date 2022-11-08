@@ -24,4 +24,7 @@ public class Computer{
         System.out.println("Wow, how did you end up not picking from the only possible options???");
     }
 
+    public String toString(){
+        return "make is " + name + " and model is " + model;
+    }
 }

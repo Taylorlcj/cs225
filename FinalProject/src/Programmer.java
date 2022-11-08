@@ -17,11 +17,9 @@ public class Programmer {
     private int initialBudget;
     private int anxiety;
 
-    public Programmer(String n, String r, Computer c, Language l, int i, int a){
+    public Programmer(String n, String r, int i, int a){
         name = n;
         rank = r;
-        computer = c;
-        language = l;
         initialBudget = i;
         anxiety = a;
     }
@@ -49,4 +47,8 @@ public class Programmer {
     public Computer getComputer(){
         return computer;
     }
+    public String getName(){
+        return name;
+    }
+
 }

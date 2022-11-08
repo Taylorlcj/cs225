@@ -10,8 +10,8 @@
 */
 public class Linux extends Computer {
 
-    public Linux(String name, String model){
-        super(name, model);
+    public Linux(String model){
+        super("Linux", model);
     }
     public void printMessage(){
         System.out.println("Congratulations! You have purchased an overly complex and difficult machine to operate. Good luck, you'll need it.");

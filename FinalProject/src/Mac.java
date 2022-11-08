@@ -10,8 +10,8 @@
 */
 public class Mac extends Computer {
 
-    public Mac(String name, String model){
-        super(name, model);
+    public Mac(String model){
+        super("Mac", model);
     }
     public void printMessage(){
         System.out.println("Congratulations! Your bank account hates you!");

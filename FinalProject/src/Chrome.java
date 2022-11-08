@@ -9,8 +9,8 @@
 ********************************************************
 */
 public class Chrome extends Computer{
-    public Chrome(String name, String model){
-        super(name, model);
+    public Chrome( String model){
+        super("Chrome", model);
     }
 
     public void printMessage(){

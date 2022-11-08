@@ -10,8 +10,8 @@
 */
 public class Windows extends Computer {
 
-    public Windows(String name, String model){
-        super(name, model);
+    public Windows(String model){
+        super("Windows", model);
     }
     public void printMessage(){
         System.out.println("Congratulations! This computer was a very smart and budget-friendly purchase!");

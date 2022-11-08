@@ -32,4 +32,8 @@ public class Language {
     public String printIdeInfo(){
         return null;
     }
+
+    public String toString(){
+        return name + " uses the ide " + ide;
+    }
 }
