@@ -24,7 +24,7 @@ public class GameController {
         System.out.println();
         Programmer player  = createPlayer();
         System.out.println("Welcome to the simulator, " + player.getName());
-        System.out.println("\nPotential languages are: " );
+        System.out.println("\nPotential languages are: ");
         ArrayList<Language> languages = createLanguages();
         for(Language l: languages){
             System.out.println(l);
