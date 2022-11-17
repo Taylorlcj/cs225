@@ -47,6 +47,9 @@ public class Programmer {
     public Computer getComputer(){
         return computer;
     }
+    public void setComputer(Computer c){
+        computer = c;
+    }
     public String getName(){
         return name;
     }

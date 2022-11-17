@@ -8,7 +8,7 @@
  Method: +main(String[]):void, +simulate():void, -gameOver():boolean, +createComputer(String fileName):Computer[]
 ********************************************************
 */
-
+import java.lang.Math;
 import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner;
@@ -17,18 +17,11 @@ import java.io.FileNotFoundException;
 public class GameController {
     public static void main(String[] args){
         ArrayList<Computer> computers = loadComputers("ComputerTypes.txt");
-        System.out.println("The following computers are available:");
-        for(Computer c: computers){
-            System.out.println(c);
-        }
         System.out.println();
         Programmer player  = createPlayer();
         System.out.println("Welcome to the simulator, " + player.getName());
-        System.out.println("\nPotential languages are: ");
+        player.setComputer(pickComputer(computers));
         ArrayList<Language> languages = createLanguages();
-        for(Language l: languages){
-            System.out.println(l);
-        }
 
     }
 
@@ -51,7 +44,7 @@ public class GameController {
             }
         }
         catch(FileNotFoundException e){
-            System.out.println("You broke my simulator! That file doesnt exist dangit!");
+            System.out.println("You broke my simulator! That file doesn't exist dangit!");
         }
         return computers;
     }
@@ -88,5 +81,25 @@ public class GameController {
         languages.add(new Language("C", new String[0], new String[0], "CodeBlocks"));
         languages.add(new Language("C#", new String[0], new String[0], "Visual Studio"));
         return languages;
+    }
+
+    public static Computer pickComputer(ArrayList<Computer> computers){
+        int choice = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Which computer do I wanna choose?");
+        for (int i = 0; i < computers.size(); i++){
+            System.out.println((i+1) + ". " + computers.get(i));
+        }
+        System.out.println("Enter one of the above numbers!");
+        try {
+            choice = scanner.nextInt();
+            computers.get(choice - 1);
+        }
+        catch(Exception e){
+            choice = 1 + (int) (Math.random() * computers.size());
+            System.out.println("I know! I'll use a number random generator!");
+        }
+        computers.get(choice - 1).purchaseMethod();
+        return computers.get(choice - 1);
     }
 }

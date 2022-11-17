@@ -25,6 +25,6 @@ public class Computer{
     }
 
     public String toString(){
-        return "make is " + name + " and model is " + model;
+        return name + ": " + model;
     }
 }
