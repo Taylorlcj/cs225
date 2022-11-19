@@ -43,6 +43,9 @@ public class Programmer {
     public Language getLanguage(){
      return language;
     }
+    public void setLanguage(Language l){
+        language = l;
+    }
 
     public Computer getComputer(){
         return computer;

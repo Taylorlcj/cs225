@@ -1,0 +1,91 @@
+Java
+IntelliJ
+fill-in-the-blank
+Complete the following line:
+________ln("Hello World");
+System.out.print
+fill-in-the-blank
+Complete the following line:
+______ x = 3.8;
+double
+multiple-choice
+Which is the right way to print a string?
+a)system.out.println("Mamma Mia);
+b)System.out.prit("Mamma Mia)
+c)System.out.println("Mamma Mia");
+c
+multiple-choice
+Which index does an array start at?
+a)1
+b)0
+c)-1
+b
+
+Python
+Pycharm
+fill-in-the-blank
+Complete the following line:
+________ln("Hello World");
+System.out.print
+fill-in-the-blank
+Complete the following line:
+______ x = 3.8;
+double
+multiple-choice
+Which is the right way to print a string?
+a)system.out.println("Mamma Mia);
+b)System.out.prit("Mamma Mia)
+c)System.out.println("Mamma Mia");
+c
+multiple-choice
+Which index does an array start at?
+a)1
+b)0
+c)-1
+b
+
+C
+CodeBlocks
+fill-in-the-blank
+Complete the following line:
+________ln("Hello World");
+System.out.print
+fill-in-the-blank
+Complete the following line:
+______ x = 3.8;
+double
+multiple-choice
+Which is the right way to print a string?
+a)system.out.println("Mamma Mia);
+b)System.out.prit("Mamma Mia)
+c)System.out.println("Mamma Mia");
+c
+multiple-choice
+Which index does an array start at?
+a)1
+b)0
+c)-1
+b
+
+C#
+Visual Studio
+fill-in-the-blank
+Complete the following line:
+________ln("Hello World");
+System.out.print
+fill-in-the-blank
+Complete the following line:
+______ x = 3.8;
+double
+multiple-choice
+Which is the right way to print a string?
+a)system.out.println("Mamma Mia);
+b)System.out.prit("Mamma Mia)
+c)System.out.println("Mamma Mia");
+c
+multiple-choice
+Which index does an array start at?
+a)1
+b)0
+c)-1
+b

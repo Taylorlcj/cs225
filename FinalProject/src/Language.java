@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 *******************************************************
  Class: Language
@@ -11,13 +13,11 @@
 */
 public class Language {
     private String name;
-    private String[] questions;
-    private String[] answers;
+    private ArrayList<Question> questions;
     private String ide;
-    public Language(String n, String[] q, String[] a, String i){
+    public Language(String n, ArrayList<Question>  q, String i){
         name = n;
         questions = q;
-        answers = a;
         ide = i;
     }
 
@@ -34,6 +34,16 @@ public class Language {
     }
 
     public String toString(){
-        return name + " uses the ide " + ide;
+        return name + " uses the ide " + ide ;
+    }
+
+    public String getName(){
+        return name;
+    }
+    public ArrayList<Question> getQuestions(){
+        return questions;
+    }
+    public String getIde(){
+        return ide;
     }
 }
