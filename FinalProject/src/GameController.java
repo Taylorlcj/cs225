@@ -23,14 +23,6 @@ public class GameController {
         player.setComputer(pickComputer(computers));
         ArrayList<Language> languages = loadLanguages("ProgrammingLanguage.txt");
         player.setLanguage(pickLanguage(languages));
-//        for (Language l : languages) {
-//            System.out.println(l.getName());
-//            System.out.println(l.getIde());
-//            for (Question q : l.getQuestions()) {
-//                q.printQuestion();
-//            }
-//            System.out.println(l.getQuestions().get(2).checkAnswer("b"));
-//        }
     }
     public static void simulate(){
 
