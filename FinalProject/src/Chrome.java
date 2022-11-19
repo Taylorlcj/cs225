@@ -14,7 +14,7 @@ public class Chrome extends Computer{
     }
 
     public void printMessage(){
-        System.out.println("Congratulations! You have purchased a computer that cannot even run a desktop IDE, go back and get a different computer!");
+        System.out.println("Congratulations! You have purchased a computer that cannot even run a desktop IDE, now you have to use the Web version of the IDE!");
     }
 
     //Go back and get a new computer!!!

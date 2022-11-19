@@ -25,17 +25,17 @@ Python
 Pycharm
 fill-in-the-blank
 Complete the following line:
-________ln("Hello World");
-System.out.print
+_____("Hello World")
+print
 fill-in-the-blank
-Complete the following line:
-______ x = 3.8;
-double
+Fill in the blank:
+x _ 3.8
+=
 multiple-choice
 Which is the right way to print a string?
-a)system.out.println("Mamma Mia);
-b)System.out.prit("Mamma Mia)
-c)System.out.println("Mamma Mia");
+a)Print("Mamma Mia");
+b)write("Mamma Mia"):
+c)print("Mamma Mia")
 c
 multiple-choice
 Which index does an array start at?
@@ -48,17 +48,17 @@ C
 CodeBlocks
 fill-in-the-blank
 Complete the following line:
-________ln("Hello World");
-System.out.print
+________f("Hello World");
+printf
 fill-in-the-blank
 Complete the following line:
 ______ x = 3.8;
 double
 multiple-choice
 Which is the right way to print a string?
-a)system.out.println("Mamma Mia);
-b)System.out.prit("Mamma Mia)
-c)System.out.println("Mamma Mia");
+a)printg("Mamma Mia");
+b)printz("Mamma Mia)"";
+c)printf("Mamma Mia");
 c
 multiple-choice
 Which index does an array start at?
@@ -71,17 +71,17 @@ C#
 Visual Studio
 fill-in-the-blank
 Complete the following line:
-________ln("Hello World");
-System.out.print
+________.WriteLine("Hello World");
+Console
 fill-in-the-blank
 Complete the following line:
 ______ x = 3.8;
 double
 multiple-choice
 Which is the right way to print a string?
-a)system.out.println("Mamma Mia);
-b)System.out.prit("Mamma Mia)
-c)System.out.println("Mamma Mia");
+a)Console.println("Mamma Mia");
+b)PC.WriteLine("Mamma Mia");
+c)Console.WriteLine("Mamma Mia");
 c
 multiple-choice
 Which index does an array start at?

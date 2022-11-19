@@ -18,8 +18,12 @@ public class GameController {
         ArrayList<Computer> computers = Computer.loadComputers("ComputerTypes.txt");
         System.out.println();
         Programmer player  = createPlayer();
-        System.out.println("Welcome to the simulator, " + player.getName());
+        System.out.println("Welcome to the simulator, " + player.getName() + "!");
         player.setComputer(pickComputer(computers));
+        System.out.println("You go home and open your new computer!");
+        System.out.print("Your computer displays: ");
+        player.getComputer().printMessage();
+        System.out.println("");
         ArrayList<Language> languages = Language.loadLanguages("ProgrammingLanguage.txt");
         player.setLanguage(pickLanguage(languages));
     }
