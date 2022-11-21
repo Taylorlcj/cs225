@@ -4,7 +4,7 @@
 // Created: October 29, 2022
 // Modified:
 //
-// Attributes: -currenTile: GenericTile - The tile tht agent is currently in.
+// Attributes: -currentTile: GenericTile - The tile tht agent is currently in.
 //             -neighborhood: GenericTile[][] - a 3-by-3 array of tiles composed of current tile plus
 //                            the eight adjacent tiles.  
 //
@@ -15,7 +15,7 @@
 //
 //***********************************************
 public class GenericAgent {
-	private GenericTile currenTile;
+	private GenericTile currentTile;
 	private GenericTile[][] neighborhood = new GenericTile[3][3];
 		
 	// ***** Methods *****
@@ -25,11 +25,11 @@ public class GenericAgent {
 	
 	// ***** Setters and Getters *****
 	public void setCurrentTile( GenericTile newTile ) {
-		currenTile = newTile;
+		currentTile = newTile;
 	}
 	
 	public GenericTile getCurrentTile() {
-		return currenTile;
+		return currentTile;
 	}
 	
 	public void setNeighborhood( GenericTile[][] newNeighbors ) {

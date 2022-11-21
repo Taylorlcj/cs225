@@ -7,7 +7,7 @@
 // Attributes: -maze: GenericTile[][] - An n-by-n array of tiles composing the maze. Order is [col][row].
 //             -agent: GenericAgent - The agent moving through the maze.
 //             -agentLocation: int[2] - The [col][row] position of the agent in the maze.
-//             -turnCounter: int - Tracks move attempts. Increments for every attempt regardless of succcess. 
+//             -turnCounter: int - Tracks move attempts. Increments for every attempt regardless of success.
 //
 // Game Play Methods: 
 //          +playGame(): Moves that agent until agent wins or loses.
@@ -25,7 +25,7 @@
 //          +createMaze(int, int): void - Creates an m-by-n array of tiles with doors randomly locked/unlocked.
 //                                        Inputs are number of columns, number of rows.
 //          +createMaze(int, int, boolean): void - Creates an m-by-n array of tiles, all doors locked or unlocked.
-//                                        Inputs are number of columnes, number of rows, locked status (TRUE or FALSE).
+//                                        Inputs are number of columns, number of rows, locked status (TRUE or FALSE).
 //
 // Printing Game State Methods:
 //          +printMaze(): void - Prints the door status of every tile in the maze.
@@ -95,8 +95,24 @@ public class GameController {
 	// ***** Movement Methods *****
 	public void moveAgent() {
 		int direction = agent.move(); // Note: should use enumerated types?
+		int col = agentLocation[0]; // This feels like a hack.
+		int row = agentLocation[1];
+
+		for (int i = 0; i < maze.length; i++) {
+			for (int j = 0; j < maze[i].length; j++) {
+				if (maze[i][j] instanceof RotatingTile){
+					double chance = Math.random();
+					if(chance <= 0.01){
+						((RotatingTile) maze[i][j]).rotateCounterClockwise();
+					}
+				}
+			}
+		}
 		
 		if ( isMoveLegal( direction ) ) {
+			if (maze[col][row] instanceof RotatingTile){
+				((RotatingTile) maze[col][row]).rotateClockwise();
+			}
 			switch (direction) {
 				case 0: agentLocation[1]--;
 						break;
@@ -123,13 +139,37 @@ public class GameController {
 		}
 		
 		switch ( direction ) {
-			case 0: if ( row == 0 ) { legality = false; } 
+			case 0:
+					if ( row == 0 ) {
+						legality = false;
+					}
+					else if ( maze[col][row - 1] instanceof SolidTile) {
+						legality = false;
+					}
+				break;
+			case 1:
+					if ( col == maze.length - 1 ) {
+						legality = false;
+					}
+					else if ( maze[col + 1][row] instanceof SolidTile) {
+						legality = false;
+					}
 					break;
-			case 1: if ( col == maze.length -1 ) { legality = false; }  
+			case 2:
+					if ( row == maze[0].length - 1 ) {
+						legality = false;
+					}
+					else if ( maze[col][row + 1] instanceof SolidTile) {
+						legality = false;
+					}
 					break;
-			case 2: if ( row == maze[0].length -1 ) { legality = false; }  
-					break;
-			case 3: if ( col == 0 ) { legality = false; }  
+			case 3:
+					if ( col == 0 ) {
+						legality = false;
+					}
+					else if ( maze[col - 1][row] instanceof SolidTile) {
+						legality = false;
+					}
 					break;
 			default: System.out.println("GameController: isMoveLegal() method default case activated. Something is wrong!");
 		}
@@ -147,10 +187,25 @@ public class GameController {
 		
 		for (int i = 0; i < cols; i++) {
 			for (int j = 0; j < rows; j++) {
-				maze[i][j] = new GenericTile();
-				maze[i][j].setAllExitsRandom( );
+				double chance = Math.random();
+				if(chance <= 0.50){
+					maze[i][j] = new StaticTile();
+					maze[i][j].setAllExitsRandom();
+				}
+				else if(chance <= 0.85){
+					maze[i][j] = new RotatingTile();
+					maze[i][j].setAllExitsRandom();
+				}
+				else{
+					maze[i][j] = new SolidTile();
+					maze[i][j].setAllExitsValue(false);
+				}
 			}
 		}
+		maze[0][(maze[0].length - 1) / 2] = new StaticTile();
+		maze[0][(maze[0].length - 1) / 2].setAllExitsRandom();
+		maze[maze[0].length-1][(maze[0].length - 1) / 2] = new StaticTile();
+		maze[maze[0].length-1][(maze[0].length - 1) / 2].setAllExitsRandom();
 	}
 
 	public void createMaze(int cols, int rows, boolean doorValues) {
@@ -160,8 +215,26 @@ public class GameController {
 			for (int j = 0; j < rows; j++) {
 				maze[i][j] = new GenericTile();
 				maze[i][j].setAllExitsValue( doorValues );
+				double chance = Math.random();
+				if(chance <= 0.50){
+					maze[i][j] = new StaticTile();
+					maze[i][j].setAllExitsValue( doorValues );
+				}
+				else if(chance <= 0.85){
+					maze[i][j] = new RotatingTile();
+					maze[i][j].setAllExitsValue( doorValues );
+
+				}
+				else{
+					maze[i][j] = new SolidTile();
+					maze[i][j].setAllExitsValue(false);
+				}
 			}
-		}		
+		}
+		maze[0][(maze[0].length - 1) / 2] = new StaticTile();
+		maze[0][(maze[0].length - 1) / 2].setAllExitsValue(doorValues);
+		maze[maze[0].length-1][(maze[0].length - 1) / 2] = new StaticTile();
+		maze[maze[0].length-1][(maze[0].length - 1) / 2].setAllExitsValue(doorValues);
 	}
 	
 	// ***** Printing Game State Methods *****
