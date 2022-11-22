@@ -1,11 +1,15 @@
 /*
 *******************************************************
- Class:
+ Class:FillInTheBlank
  Author: Taylor Jensen
  Date Created: Nov 18, 2022
- Purpose:
- Attributes:
- Method:
+ Purpose: Classifies all the questions that are FilL in the blank
+
+ Attributes:-description: String
+            -statement: String
+
+ Method:+printQuestion(): void
+
 ********************************************************
 */
 public class FillInTheBlank extends Question{
@@ -17,7 +21,9 @@ public class FillInTheBlank extends Question{
         System.out.println(statement);
     }
 
-    public void setDescrtiption(String desc){
+
+    //Getter and Setters
+    public void setDescription(String desc){
         description = desc;
     }
 

@@ -3,9 +3,12 @@
  Class: Question
  Author: Taylor Jensen
  Date Created: Nov 18, 2022
- Purpose:
- Attributes:
- Method:
+ Purpose: Stores the different type of questions
+ Attributes: -answer: String
+
+ Method: +printQuestion(): void
+         +checkAnswer(ans:String): boolean
+
 ********************************************************
 */
 public class Question {
@@ -18,6 +21,7 @@ public class Question {
         return answer.equals(ans);
     }
 
+    //Getter and Setters
     public void setAnswer(String ans){
         answer = ans;
     }

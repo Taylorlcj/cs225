@@ -4,9 +4,18 @@
  Author: Taylor Jensen
  Date Created: Nov 6, 2022
  Purpose: This class stores the bulk of the player information
- Attributes: -name:String, -questions: String[], -answers: String[], -ide:String
- Method: <<constructor>>Programmer(String n, String r, Computer c, Language l, int i, int a), +anxietyUp(value: int):void,
- +anxietyDown(value: int):void, +decreaseBudget(amount: int):void, +getLanguage():Language, +getComputer():Computer,+printInfo():void
+ Attributes: -name:String
+             -rank:String
+             -computer:Computer
+             -language:Language
+             -initialBudget:int
+             -anxiety:int
+
+ Method: <<constructor>>Programmer(String n, String r, int i, int a)
+         +anxietyUp(value: int):void
+         +anxietyDown(value: int):void
+         +decreaseBudget(amount: int):void
+         +printInfo():void
 ********************************************************
 */
 public class Programmer {
@@ -16,6 +25,7 @@ public class Programmer {
     private Language language;
     private int initialBudget;
     private int anxiety;
+
 
     public Programmer(String n, String r, int i, int a){
         name = n;
@@ -40,6 +50,8 @@ public class Programmer {
 
     }
 
+
+    //Getters and Setters
     public Language getLanguage(){
      return language;
     }

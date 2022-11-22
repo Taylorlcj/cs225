@@ -4,10 +4,19 @@
  Author: Taylor Jensen
  Date Created: Nov 6, 2022
  Purpose:This class allows the game to start and end
- Attributes: -player:Programmer
- Method: +main(String[]):void, +simulate():void, -gameOver():boolean, +createComputer(String fileName):Computer[]
+ Attributes:
+
+ Method: (Static)+main(String[]):void
+         (Static)+simulate():void
+         (Static)+gameOver():boolean
+         (Static)+createPlayer():Programmer
+         (Static)+pickComputer(computers: ArrayList<Computer>):Computer
+         (Static)+pickLanguage(languages:ArrayList<Language>):Language
+
 ********************************************************
 */
+
+//imports
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Scanner;

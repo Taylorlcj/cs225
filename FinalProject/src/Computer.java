@@ -4,10 +4,19 @@
  Author: Taylor Jensen
  Date Created: Nov 6, 2022
  Purpose: This class determines what happens when the player purchases a computer
- Attributes: -name:String, -model:String
- Method: <<constructor>>Computer(String n, String m), +purchaseMessage():void, +printMessage():void
+ Attributes: -name:String
+             -model:String
+
+ Method: <<constructor>>Computer(String n, String m)
+         +purchaseMethod():void
+         +printMessage():void
+         +toString():String
+         (Static)+loadComputers(fileName: String):ArrayList<Computer>
+         (Static)+createComputers(name: String, model: String): Computer
 ********************************************************
 */
+
+//imports
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -38,9 +47,9 @@ public class Computer{
         File file = new File(fileName);
         try (Scanner input = new Scanner(file)) {
             while(input.hasNextLine()){
-                String make = input.nextLine();
+                String name = input.nextLine();
                 String model = input.nextLine();
-                computers.add(createComputer(make, model));
+                computers.add(createComputer(name, model));
             }
         }
         catch(FileNotFoundException e){
@@ -48,14 +57,14 @@ public class Computer{
         }
         return computers;
     }
-    public static Computer createComputer(String make, String model){
-        if(make.toLowerCase().equals("mac")){
+    public static Computer createComputer(String name, String model){
+        if(name.toLowerCase().equals("mac")){
             return new Mac(model);
         }
-        else if (make.toLowerCase().equals("windows")) {
+        else if (name.toLowerCase().equals("windows")) {
             return new Windows(model);
         }
-        else if (make.toLowerCase().equals("chrome")) {
+        else if (name.toLowerCase().equals("chrome")) {
             return new Chrome(model);
         }
         else{

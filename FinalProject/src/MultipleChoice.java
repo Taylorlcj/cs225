@@ -1,11 +1,14 @@
 /*
 *******************************************************
- Class:
+ Class:MultipleChoice
  Author: Taylor Jensen
  Date Created: Nov 18, 2022
- Purpose:
- Attributes:
- Method:
+ Purpose: Classifies all the questions that are multiple choice
+ Attributes:-question: string
+            -choices: String[]
+
+ Method: +printQuestion(): void
+
 ********************************************************
 */
 public class MultipleChoice extends Question{
@@ -14,11 +17,12 @@ public class MultipleChoice extends Question{
 
     public void printQuestion(){
         System.out.println(question);
-        for (int i = 0; i < choices.length; i++) {
-            System.out.println(choices[i]);
+        for (String choice : choices) {
+            System.out.println(choice);
         }
     }
 
+    //Getter and Setters
     public void setQuestion(String quest){
         question = quest;
     }

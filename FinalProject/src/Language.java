@@ -4,26 +4,42 @@
  Author: Taylor Jensen
  Date Created: Nov 6, 2022
  Purpose: This class stores the player's choice of language that is chosen
- Attributes: -name:String, -questions: String[], -answers: String[], -ide:String
- Method: <<constructor>>Language(String n, String[] q, String[] a, String i),+checkStatement(question: int):boolean,
- +askQuestion(question: int):void, +printIdeInfo():string
+ Attributes: -name: String
+             -questions: ArrayList<Question>
+             -ide: String
+
+ Method: <<constructor>>Language(String n, String[] q, String[] a, String i)
+         +checkStatement(question: int):boolean,
+         +askQuestion(question: int):void
+         +printIdeInfo():string
+         +toString():String
+         (Static)+loadLanguages(filename: String):ArrayList<Languages>
+         (Static)+createMultipleChoice(quest: String, ch: String[], ans: String):Question
+         (Static)+createFillInTheBlank(desc: String, state: String, ans: String):Question
 ********************************************************
 */
+
+// **  imports  **
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Language {
+
+    // **  Attributes  **
     private String name;
     private ArrayList<Question> questions;
     private String ide;
+
+    // ** Constructor **
     public Language(String n, ArrayList<Question>  q, String i){
         name = n;
         questions = q;
         ide = i;
     }
 
+    // **  Methods  **
     public boolean checkStatement(int question){
         return true;
     }
@@ -40,15 +56,6 @@ public class Language {
         return name + " uses the ide " + ide ;
     }
 
-    public String getName(){
-        return name;
-    }
-    public ArrayList<Question> getQuestions(){
-        return questions;
-    }
-    public String getIde(){
-        return ide;
-    }
     public static ArrayList<Language> loadLanguages(String fileName){
         ArrayList<Language> languages = new ArrayList<Language>();
         File file = new File(fileName);
@@ -96,9 +103,20 @@ public class Language {
     }
     public static Question createFillInTheBlank(String desc, String state, String ans){
         FillInTheBlank q = new FillInTheBlank();
-        q.setDescrtiption(desc);
+        q.setDescription(desc);
         q.setStatement(state);
         q.setAnswer(ans);
         return q;
+    }
+
+    // **  Getters and Setters  **
+    public String getName(){
+        return name;
+    }
+    public ArrayList<Question> getQuestions(){
+        return questions;
+    }
+    public String getIde(){
+        return ide;
     }
 }
