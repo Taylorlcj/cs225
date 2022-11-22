@@ -1,12 +1,13 @@
 //***********************************************
-// Class: GenericTile
+// Class: RotatingTile
 // Author: Taylor Jensen
 // Created: Nov 21, 2022
 // Modified:
 //
 // Attributes:
 //
-// Methods:
+// Methods: +rotateClockwise(): void - rotates the tile clockwise
+//          +rotateClockwise(): void - rotates the tile counterclockwise
 //
 // Specialized setters and getters:
 //

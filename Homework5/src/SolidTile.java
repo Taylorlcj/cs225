@@ -1,5 +1,5 @@
 //***********************************************
-// Class: GenericTile
+// Class: Solid Tile
 // Author: Taylor Jensen
 // Created: Nov 21, 2022
 // Modified:

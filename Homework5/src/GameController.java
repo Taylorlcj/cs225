@@ -3,6 +3,7 @@
 // Author: Keith Garfield
 // Created: October 16, 2022
 // Modified: Oct 20, 2022 -- Modified to add the generic agent, create movement, set win/loss conditions.
+// Modified: Nov 21, 2022 -- Modified the moveAgent, isMoveLegal, and the createMaze methods
 //
 // Attributes: -maze: GenericTile[][] - An n-by-n array of tiles composing the maze. Order is [col][row].
 //             -agent: GenericAgent - The agent moving through the maze.

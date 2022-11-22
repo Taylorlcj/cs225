@@ -1,5 +1,5 @@
 //***********************************************
-// Class: GenericTile
+// Class: StaticTile
 // Author: Taylor Jensen
 // Created: Nov 21, 2022
 // Modified:
