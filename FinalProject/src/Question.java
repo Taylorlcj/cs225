@@ -13,6 +13,7 @@
 */
 public class Question {
     private String answer;
+    private String lesson;
 
     public void printQuestion(){
 
@@ -26,4 +27,11 @@ public class Question {
         answer = ans;
     }
 
+    public void setLesson(String lesson){
+
+    }
+
+    public String getLesson(){
+        return lesson;
+    }
 }

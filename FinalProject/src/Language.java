@@ -70,16 +70,18 @@ public class Language {
                 while (input.hasNextLine()){
                     String type = input.nextLine();
                     if(type.equals("fill-in-the-blank")){
+                        String lesson = input.nextLine();
                         String desc = input.nextLine();
                         String state = input.nextLine();
                         String ans = input.nextLine();
-                        questions.add(createFillInTheBlank(desc, state, ans));
+                        questions.add(createFillInTheBlank(desc, state, ans, lesson));
                     }
                     else if(type.equals("multiple-choice")) {
+                        String lesson = input.nextLine();
                         String quest = input.nextLine();
                         String[] ch = {input.nextLine(),input.nextLine(),input.nextLine()};
                         String ans = input.nextLine();
-                        questions.add(createMultipleChoice(quest, ch, ans));
+                        questions.add(createMultipleChoice(quest, ch, ans, lesson));
                     }
                     else{
                         break;
@@ -89,23 +91,25 @@ public class Language {
             }
         }
         catch(FileNotFoundException e){
-            System.out.println("You broke my simulator! That file doesn't exist dangit!");
+            System.out.println("You broke my simulator! That file doesn't exist dang it!");
         }
         return languages;
     }
 
-    public static Question createMultipleChoice(String quest, String[] ch, String ans){
+    public static Question createMultipleChoice(String quest, String[] ch, String ans, String l){
         MultipleChoice q = new MultipleChoice();
         q.setQuestion(quest);
         q.setChoices(ch);
         q.setAnswer(ans);
+        q.setLesson(l);
         return q;
     }
-    public static Question createFillInTheBlank(String desc, String state, String ans){
+    public static Question createFillInTheBlank(String desc, String state, String ans, String l){
         FillInTheBlank q = new FillInTheBlank();
         q.setDescription(desc);
         q.setStatement(state);
         q.setAnswer(ans);
+        q.setLesson(l);
         return q;
     }
 
