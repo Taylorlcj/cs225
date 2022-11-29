@@ -38,6 +38,11 @@ public class GameController {
         System.out.println("Great! Now that I have a computer, all I need is to pick my programming language to code in!\n");
         ArrayList<Language> languages = Language.loadLanguages("ProgrammingLanguage.txt");
         player.setLanguage(pickLanguage(languages));
+        player.setPaidCourse(pickCourse());
+        teachLesson(player);
+        System.out.println("\nI'm finally ready for my interview");
+        System.out.println("**Goes to interview**\n");
+        giveInterview(player);
     }
     public static void simulate(){
 
@@ -71,7 +76,7 @@ public class GameController {
         }
         catch(Exception e){
             choice = 1 + (int) (Math.random() * computers.size());
-            System.out.println("I know! I'll use a number random generator!");
+            System.out.println("I know! I'll use a random number generator!");
         }
         computers.get(choice - 1).purchaseMethod();
         return computers.get(choice - 1);
@@ -91,9 +96,80 @@ public class GameController {
         }
         catch(Exception e){
             choice = 1 + (int) (Math.random() * languages.size());
-            System.out.println("I know! I'll use a number random generator!");
+            System.out.println("I know! I'll use a random number generator!");
         }
         System.out.println(languages.get(choice - 1));
         return languages.get(choice - 1);
+    }
+
+    public static boolean pickCourse(){
+        int choice = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nNow what kind of learning style should I pick???");
+        System.out.println("1. Youtube/Free Courses");
+        System.out.println("2. Udemy/Paid Courses");
+        System.out.println("Enter one of the above numbers!");
+        choice = scanner.nextInt();
+        if(choice == 1){
+            System.out.println("I'll air on the safe side and go for the free courses");
+            return false;
+        } else if (choice == 2) {
+            System.out.println("I'm all in! It's only money!\n");
+            return true;
+        }
+        else{
+            System.out.println("I'll air on the safe side and go for the free courses");
+            return false;
+        }
+    }
+
+    public static void teachLesson(Programmer player){
+        int numQuestions = player.getLanguage().getQuestions().size();
+        for (int i = 0; i < numQuestions / 2; i++){
+            Question q = player.getLanguage().getQuestions().get(i);
+            askQuestionLesson(q, player.getPaidCourse());
+        }
+
+    }
+
+    public static void askQuestionLesson(Question q, boolean paid){
+        if (paid){
+            System.out.println(q.getLesson());
+        }
+        q.printQuestion();
+        Scanner scanner = new Scanner(System.in);
+        String ans = scanner.nextLine();
+        while(!q.checkAnswer(ans)){
+            System.out.println("\nTry again!!!");
+            ans = scanner.nextLine();
+        }
+        System.out.println("Great Job!!!\n");
+    }
+
+    public static boolean askQuestionInterview(Question q){
+        q.printQuestion();
+        Scanner scanner = new Scanner(System.in);
+        String ans = scanner.nextLine();
+        return q.checkAnswer(ans);
+    }
+
+    public static void giveInterview(Programmer player){
+        int count = 0;
+        int numQuestions = player.getLanguage().getQuestions().size();
+        for(int i = numQuestions / 2; i < numQuestions; i++){
+            Question q = player.getLanguage().getQuestions().get(i);
+            if(askQuestionInterview(q)){
+                count++;
+            }
+        }
+        if(count == 0 ){
+            System.out.println("You suck but we're short on staff so you're hired!");
+        }
+        else if (count == numQuestions - (numQuestions/2)){
+            System.out.println("You are absolutely outstanding! You're hired!");
+        }
+        else{
+            System.out.println("You passed! You're hired!");
+        }
     }
 }

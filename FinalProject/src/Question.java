@@ -27,8 +27,8 @@ public class Question {
         answer = ans;
     }
 
-    public void setLesson(String lesson){
-
+    public void setLesson(String l){
+        lesson = l;
     }
 
     public String getLesson(){

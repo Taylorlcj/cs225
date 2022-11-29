@@ -25,6 +25,8 @@ public class Programmer {
     private Language language;
     private int initialBudget;
     private int anxiety;
+    private boolean paidCourse;
+
 
 
     public Programmer(String n, String r, int i, int a){
@@ -67,6 +69,12 @@ public class Programmer {
     }
     public String getName(){
         return name;
+    }
+    public void setPaidCourse(boolean pc){
+        paidCourse = pc;
+    }
+    public boolean getPaidCourse(){
+        return paidCourse;
     }
 
 }

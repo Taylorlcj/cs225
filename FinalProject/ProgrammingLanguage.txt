@@ -5,11 +5,6 @@ In order to print Goodbye in Java we use the following: System.out.println("Good
 Complete the following line:
 ________ln("Hello World");
 System.out.print
-fill-in-the-blank
-In java we use int for integers, double for decimals, and char for a single character
-Complete the following line:
-______ x = 3.8;
-double
 multiple-choice
 We use println to display a string in Java
 Which is the right way to print a string?
@@ -17,6 +12,11 @@ a)system.out.println("Mamma Mia);
 b)System.out.prit("Mamma Mia)
 c)System.out.println("Mamma Mia");
 c
+fill-in-the-blank
+In java we use int for integers, double for decimals, and char for a single character
+Complete the following line:
+______ x = 3.8;
+double
 multiple-choice
 Unlike normal counting where we start at 1, Java uses 0 based indexing
 Which index does an array start at?
@@ -32,11 +32,6 @@ In order to print Goodbye in Python we use the following: print("Goodbye")
 Complete the following line:
 _____("Hello World")
 print
-fill-in-the-blank
-In Python we use = for assignment and == for comparison
-Fill in the blank:
-x _ 3.8
-=
 multiple-choice
 We use print to display a string in Python
 Which is the right way to print a string?
@@ -44,6 +39,11 @@ a)print("Mamma Mia"");
 b)write("Mamma Mia"):
 c)print("Mamma Mia")
 c
+fill-in-the-blank
+In Python we use = for assignment and == for comparison
+Fill in the blank:
+x _ 3.8
+=
 multiple-choice
 Unlike normal counting where we start at 1, Python uses 0 based indexing
 Which index does an array start at?
@@ -59,11 +59,6 @@ In order to print Goodbye in C we use the following: printf("Goodbye");
 Complete the following line:
 ________f("Hello World");
 printf
-fill-in-the-blank
-In C we use int for integers, double for decimals, and char for a single character
-Complete the following line:
-______ x = 3.8;
-double
 multiple-choice
 We use printf to display a string in C
 Which is the right way to print a string?
@@ -71,6 +66,11 @@ a)printg("Mamma Mia");
 b)printf("Mamma Mia)"";
 c)printf("Mamma Mia");
 c
+fill-in-the-blank
+In C we use int for integers, double for decimals, and char for a single character
+Complete the following line:
+______ x = 3.8;
+double
 multiple-choice
 Unlike normal counting where we start at 1, C uses 0 based indexing
 Which index does an array start at?
@@ -86,11 +86,6 @@ In order to print Goodbye in C# we use the following: Console.WriteLine("Goodbye
 Complete the following line:
 ________.WriteLine("Hello World");
 Console
-fill-in-the-blank
-In C# we use int for integers, double for decimals, and char for a single character
-Complete the following line:
-______ x = 3.8;
-double
 multiple-choice
 We use Console._____ to display a string in
 Which is the right way to print a string?
@@ -98,6 +93,11 @@ a)Console.println("Mamma Mia");
 b)PC.WriteLine("Mamma Mia");
 c)Console.WriteLine("Mamma Mia");
 c
+fill-in-the-blank
+In C# we use int for integers, double for decimals, and char for a single character
+Complete the following line:
+______ x = 3.8;
+double
 multiple-choice
 Unlike normal counting where we start at 1, C# uses 0 based indexing
 Which index does an array start at?
