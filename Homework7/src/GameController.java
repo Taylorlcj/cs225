@@ -27,6 +27,9 @@
 //                                        Inputs are number of columns, number of rows.
 //          +createMaze(int, int, boolean): void - Creates an m-by-n array of tiles, all doors locked or unlocked.
 //                                        Inputs are number of columns, number of rows, locked status (TRUE or FALSE).
+//			 +createMaze(String filename): void - Reads in Maze.dat for maze information.
+////
+//			+isMazeLegal(int, int): boolean - Returns true iff maze is n-by-n and n is odd.
 //
 // Printing Game State Methods:
 //          +printMaze(): void - Prints the door status of every tile in the maze.
@@ -39,6 +42,13 @@
 //
 //***********************************************
 
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+
+//THIS IS XY/COL ROW FORM!!!! I REPEAT, THIS IS XY/COL ROW FORM
 public class GameController {
 	private GenericTile[][] maze;
 	private GenericAgent agent;
@@ -237,6 +247,61 @@ public class GameController {
 		maze[maze[0].length-1][(maze[0].length - 1) / 2] = new StaticTile();
 		maze[maze[0].length-1][(maze[0].length - 1) / 2].setAllExitsValue(doorValues);
 	}
+
+	//loading from a file
+	public void createMaze(String fileName){
+		try {
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
+			// make a String called line
+			String line;
+			int cols = Integer.parseInt(br.readLine());
+			int rows = Integer.parseInt(br.readLine());
+			if(!isMazeLegal(rows, cols)){
+				return;
+			}
+
+			maze = new GenericTile[cols][rows];
+
+			for(int i = 0; i < cols; i++){
+				for(int j = 0; j < rows; j++){
+					line = br.readLine();
+					String[] lineColumns;
+					lineColumns = line.split(" ");
+
+					if(lineColumns[2].equals("Static")){
+						maze[i][j] = new StaticTile();
+
+					}
+					else if(lineColumns[2].equals("Solid")){
+						maze[i][j] = new SolidTile();
+					}
+					else if(lineColumns[2].equals("Rotating")){
+						maze[i][j] = new RotatingTile();
+
+					}
+					else{
+						System.out.println("What the heck did you do to my code????");
+					}
+
+					for(int k = 0; k < 4; k++){
+						if(lineColumns[k+4].equals("L")){
+							maze[i][j].setSingleExit(k, false);
+						}
+						else{
+							maze[i][j].setSingleExit(k, true);
+						}
+					}
+
+				}
+			}
+			br.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+	}
 	
 	// ***** Printing Game State Methods *****
 	public void printMaze() {
@@ -276,6 +341,25 @@ public class GameController {
 		System.out.print("The agent is at column " + agentLocation[0]);
 		System.out.println(" and row " + agentLocation[1] +".");
 	}
+
+	public boolean isMazeLegal(int rows, int cols) {
+		boolean legality = true;
+
+		if ( rows != cols ) {
+			legality = false;
+			System.out.println("The maze does not have an equal number of rows and columns.");
+			System.out.println("The maze will not be created.");
+		}
+
+		if ( rows%2 != 1 ) {
+			legality = false;
+			System.out.println("The maze does not have an odd number of rows and columns.");
+			System.out.println("The maze will not be created.");
+		}
+
+		return legality;
+	}
+
 
 	// ***** Setters and Getters *****
 	public void setAgent( Agent agentType) {
