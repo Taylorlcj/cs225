@@ -400,6 +400,22 @@ public class GameController {
 		return legality;
 	}
 
+	private GenericTile[][] grabNeighbor(){
+
+		GenericTile[][] tiles = new GenericTile[3][3];
+
+		for (int row = 0; row < 3; row++)
+		{
+			for (int col = 0; col <3; col++)
+			{
+				if ((agentLocation[0]-1 + row) >= 0 && (agentLocation[1]-1 + col) >= 0 && (agentLocation[0]-1 + row) <maze.length && (agentLocation[1]-1 + col) <maze.length)
+				{
+					tiles[row][col] = maze[agentLocation[0]-1 + row][agentLocation[1]-1 + col];
+				}
+			}
+		}
+		return tiles;
+	}
 
 	// ***** Setters and Getters *****
 	public void setAgent( Agent agentType) {
