@@ -4,6 +4,7 @@
 // Created: October 16, 2022
 // Modified: Oct 20, 2022 -- Modified to add the generic agent, create movement, set win/loss conditions.
 // Modified: Nov 21, 2022 -- Modified the moveAgent, isMoveLegal, and the createMaze methods
+//Modified: Dec 3, 2022 -- Modified the GameController and MGMain class
 //
 // Attributes: -maze: GenericTile[][] - An n-by-n array of tiles composing the maze. Order is [col][row].
 //             -agent: GenericAgent - The agent moving through the maze.
@@ -43,10 +44,7 @@
 //***********************************************
 
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 //THIS IS XY/COL ROW FORM!!!! I REPEAT, THIS IS XY/COL ROW FORM
 public class GameController {
@@ -54,6 +52,19 @@ public class GameController {
 	private GenericAgent agent;
 	private int[] agentLocation = new int[2];
 	private int turnCounter = 0;
+
+	private BufferedWriter bufferedWriter;
+
+	public GameController() {
+		File outputFile = new File("Result.dat");
+		try {
+			FileWriter fileWriter = new FileWriter(outputFile);
+			bufferedWriter = new BufferedWriter(fileWriter);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	// ***** Game Play Methods *****
 	public void playGame() {
@@ -61,15 +72,26 @@ public class GameController {
 			moveAgent();
 			turnCounter++;
 		}
-		
-		if ( hasAgentLost() ) {
-			printAgentLocation();
-			System.out.println("Agent has moved 50 times without reaching the goal. Agent has lost.");
-		}
-		
-		if ( hasAgentWon() ) {
-			printAgentLocation();
-			System.out.println("Agent has reached the goal. Agent has won.");
+
+		try {
+			if ( hasAgentLost() ) {
+				printAgentLocation();
+				System.out.println("Agent has moved 50 times without reaching the goal. Agent has lost.");
+				bufferedWriter.write("Agent has moved 50 times without reaching the goal. Agent has lost.");
+				bufferedWriter.newLine();
+			}
+
+			if ( hasAgentWon() ) {
+				printAgentLocation();
+				System.out.println("Agent has reached the goal. Agent has won.");
+				bufferedWriter.write("Agent has reached the goal. Agent has won.");
+				bufferedWriter.newLine();
+			}
+
+
+			bufferedWriter.close();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -90,7 +112,7 @@ public class GameController {
 		
 		if ( agentIsInGoal() ) {
 			agentWon = true;
-		}	
+		}
 		return agentWon;
 	}
 	
@@ -340,6 +362,18 @@ public class GameController {
 	public void printAgentLocation() {
 		System.out.print("The agent is at column " + agentLocation[0]);
 		System.out.println(" and row " + agentLocation[1] +".");
+		try{
+
+
+			bufferedWriter.write("The agent is at column " + agentLocation[0]);
+			bufferedWriter.write(" and row " + agentLocation[1] +".");
+			bufferedWriter.newLine();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
 	}
 
 	public boolean isMazeLegal(int rows, int cols) {
