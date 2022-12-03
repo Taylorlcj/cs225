@@ -137,6 +137,7 @@ public class GameController {
 					double chance = Math.random();
 					if(chance <= 0.01){
 						((RotatingTile) maze[i][j]).rotateCounterClockwise();
+						System.out.println("Tile (" + i + ", " + j + ") rotates counterclockwise");
 					}
 				}
 			}
@@ -145,6 +146,7 @@ public class GameController {
 		if ( isMoveLegal( direction ) ) {
 			if (maze[col][row] instanceof RotatingTile){
 				((RotatingTile) maze[col][row]).rotateClockwise();
+				System.out.println("Tile (" + col + ", " + row + ") rotates clockwise");
 			}
 			switch (direction) {
 				case 0: agentLocation[1]--;
@@ -178,6 +180,7 @@ public class GameController {
 					}
 					else if ( maze[col][row - 1] instanceof SolidTile) {
 						legality = false;
+						System.out.println("Tile (" + col + ", " + (row-1) + ") prevents agent from entering");
 					}
 				break;
 			case 1:
@@ -186,6 +189,7 @@ public class GameController {
 					}
 					else if ( maze[col + 1][row] instanceof SolidTile) {
 						legality = false;
+						System.out.println("Tile (" + (col + 1) + ", " + row + ") prevents agent from entering");
 					}
 					break;
 			case 2:
@@ -194,6 +198,7 @@ public class GameController {
 					}
 					else if ( maze[col][row + 1] instanceof SolidTile) {
 						legality = false;
+						System.out.println("Tile (" + col + ", " + (row+1) + ") prevents agent from entering");
 					}
 					break;
 			case 3:
@@ -202,6 +207,7 @@ public class GameController {
 					}
 					else if ( maze[col - 1][row] instanceof SolidTile) {
 						legality = false;
+						System.out.println("Tile (" + (col - 1) + ", " + row + ") prevents agent from entering");
 					}
 					break;
 			default: System.out.println("GameController: isMoveLegal() method default case activated. Something is wrong!");
