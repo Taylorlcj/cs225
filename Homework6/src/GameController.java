@@ -144,6 +144,7 @@ public class GameController {
 		}
 		
 		if ( isMoveLegal( direction ) ) {
+			agent.setDirectionEntered((direction + 2) % 4);
 			if (maze[col][row] instanceof RotatingTile){
 				((RotatingTile) maze[col][row]).rotateClockwise();
 				System.out.println("Tile (" + col + ", " + row + ") rotates clockwise");
@@ -379,7 +380,10 @@ public class GameController {
 			e.printStackTrace();
 		}
 
-
+		agent.setNeighborhood(grabNeighbor());
+		agent.setCurrentx(agentLocation[0]);
+		agent.setCurrenty(agentLocation[1]);
+		agent.setCurrentTile(maze[agentLocation[0]][agentLocation[1]]);
 	}
 
 	public boolean isMazeLegal(int rows, int cols) {
@@ -408,9 +412,9 @@ public class GameController {
 		{
 			for (int col = 0; col <3; col++)
 			{
-				if ((agentLocation[0]-1 + row) >= 0 && (agentLocation[1]-1 + col) >= 0 && (agentLocation[0]-1 + row) <maze.length && (agentLocation[1]-1 + col) <maze.length)
+				if ((agentLocation[1]-1 + row) >= 0 && (agentLocation[0]-1 + col) >= 0 && (agentLocation[1]-1 + row) <maze.length && (agentLocation[0]-1 + col) <maze.length)
 				{
-					tiles[row][col] = maze[agentLocation[0]-1 + row][agentLocation[1]-1 + col];
+					tiles[row][col] = maze[agentLocation[0]-1 + col][agentLocation[1]-1 + row];
 				}
 			}
 		}
@@ -422,11 +426,12 @@ public class GameController {
 		switch (agentType) {
 		case Generic: agent = new GenericAgent();
 					  break;
-		case Greedy: agent = new GenericAgent();
-					System.out.println("Gamecontroller: Creating Greedy agent requires definition.");
+		case Greedy: agent = new GreedyAgent();
+		agent.setGoalx(maze.length);
+		agent.setGoaly(maze[0].length/2);
 					  break;
-		case LeftWall: agent = new GenericAgent();
-					System.out.println("Gamecontroller: Creating LeftWall agent requires definition.");
+		case LeftWall: agent = new LeftWallAgent();
+		agent.setDirectionEntered(1);
 					  break;
 		default: agent = new GenericAgent();
 		}

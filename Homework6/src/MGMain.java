@@ -23,7 +23,7 @@ public class MGMain {
 		MGMain me = new MGMain();
 //		me.createMaze(5, 5);
 		me.createMaze("Maze.dat");
-		me.createAgent( Agent.Generic );
+		me.createAgent( Agent.LeftWall);
 		me.playGame();
 	}
 	
