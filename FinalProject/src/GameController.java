@@ -17,6 +17,8 @@
 */
 
 //imports
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,21 +30,23 @@ public class GameController {
         System.out.println();
         Programmer player  = createPlayer();
         System.out.println("Welcome to the simulator, " + player.getName() + "!\n");
-        System.out.println("*Wakes up in the morning*");
-        System.out.println("Hey, I wanna be a software developer!");
-        System.out.println("I'm gonna go to best buy and pick out which computer I want to begin my journey with!\n");
-        player.setComputer(pickComputer(computers));
-        System.out.println("\nYou go home and open your new computer!");
-        System.out.print("Your computer displays: ");
-        player.getComputer().printMessage();
+//        System.out.println("*Wakes up in the morning*");
+//        System.out.println("Hey, I want to be a software developer!");
+//        System.out.println("I'm going to go to Best Buy and pick out which computer I want to begin my journey with!\n");
+//        player.setComputer(pickComputer(computers));
+//        System.out.println("\nYou go home and open your new computer!");
+//        System.out.print("Your computer displays: ");
+//        player.getComputer().printMessage();
         System.out.println("Great! Now that I have a computer, all I need is to pick my programming language to code in!\n");
         ArrayList<Language> languages = Language.loadLanguages("ProgrammingLanguage.txt");
         player.setLanguage(pickLanguage(languages));
-        player.setPaidCourse(pickCourse());
-        teachLesson(player);
-        System.out.println("\nI'm finally ready for my interview");
-        System.out.println("**Goes to interview**\n");
-        giveInterview(player);
+//        player.setPaidCourse(pickCourse());
+//        teachLesson(player);
+//        System.out.println("\nI'm finally ready for my interview");
+//        System.out.println("**Goes to interview**\n");
+//        giveInterview(player);
+        ArrayList<String> reviews = readReviews("Reviews.txt");
+        workLife(player, reviews);
     }
     public static void simulate(){
 
@@ -59,7 +63,7 @@ public class GameController {
         if(name.trim().isEmpty()){
             name = "Anonymous";
         }
-        return new Programmer(name,"student",1500, 0);
+        return new Programmer(name,"student", 0);
     }
 
     public static Computer pickComputer(ArrayList<Computer> computers){
@@ -172,4 +176,65 @@ public class GameController {
             System.out.println("You passed! You're hired!");
         }
     }
+
+    public static ArrayList<String> readReviews(String fileName){
+        ArrayList<String> reviews = new ArrayList<String>();
+        File file = new File(fileName);
+        try (Scanner input = new Scanner(file)) {
+
+            while(input.hasNextLine()){
+                reviews.add(input.nextLine());
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println("You broke my simulator! That file doesn't exist dang it!");
+        }
+        return reviews;
+    }
+
+    public static void workLife(Programmer player, ArrayList<String> reviews){
+        int choice;
+        Scanner scanner = new Scanner(System.in);
+
+        while(true){
+            choice = (int) (Math.random() * reviews.size());
+            System.out.println(reviews.get(choice));
+            if(choice == 0){
+                System.out.println("Sorry the game is over!");
+                break;
+            }
+            //  TODO fix this in post!!!!!!!-------------------------------------------------------------------------------------------------
+            else if (choice <= 2){
+                player.anxietyUp(2);
+            }
+            else if (choice > 4 ){
+                System.out.println("Answer this question for a promotion:");
+                if(promotion(player)){
+                    System.out.println("You got a promotion!");
+                    //TODO you are now insert rank--------------------------------------------------------------------------------------
+//                    if(player.rank.equals("junior")){
+//
+//                    }
+                    player.anxietyDown();
+                }
+                else{
+                    System.out.println("You got it wrong!");
+                    player.anxietyUp(1);
+                }
+
+            }
+
+            System.out.println("Continue to next year? [Press Enter]");
+            scanner.nextLine();
+        }
+
+    }
+
+    public static boolean promotion(Programmer player){
+        int choice = (int) (Math.random() * player.getLanguage().getQuestions().size());
+
+        return askQuestionInterview(player.getLanguage().getQuestions().get(choice));
+    }
+
 }
+

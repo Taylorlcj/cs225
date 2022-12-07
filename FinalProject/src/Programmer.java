@@ -8,10 +8,9 @@
              -rank:String
              -computer:Computer
              -language:Language
-             -initialBudget:int
              -anxiety:int
 
- Method: <<constructor>>Programmer(String n, String r, int i, int a)
+ Method: <<constructor>>Programmer(String n, String r, int a)
          +anxietyUp(value: int):void
          +anxietyDown(value: int):void
          +decreaseBudget(amount: int):void
@@ -23,29 +22,29 @@ public class Programmer {
     private String rank;
     private Computer computer;
     private Language language;
-    private int initialBudget;
     private int anxiety;
     private boolean paidCourse;
 
 
 
-    public Programmer(String n, String r, int i, int a){
+    public Programmer(String n, String r, int a){
         name = n;
         rank = r;
-        initialBudget = i;
         anxiety = a;
     }
 
     public void anxietyUp(int value){
-
+        anxiety += value;
     }
 
-    public void anxietyDown(int value){
-
+    public void anxietyDown(){
+        anxiety--;
     }
 
-    public void decreaseBudget(int amount){
-
+    public void rankUp(){ //TODO MAKE ENUM!!!!---------------------------------------------------------------------------------
+        if(rank == null){
+            rank = "junior developer";
+        }
     }
 
     public void printInfo(){
@@ -76,5 +75,7 @@ public class Programmer {
     public boolean getPaidCourse(){
         return paidCourse;
     }
-
+    public String getRank() {
+        return rank;
+    }
 }
