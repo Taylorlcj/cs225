@@ -203,11 +203,10 @@ public class GameController {
                 System.out.println("Sorry the game is over!");
                 break;
             }
-            //  TODO fix this in post!!!!!!!-------------------------------------------------------------------------------------------------
-            else if (choice <= 2){
+            else if (choice <= 7){
                 player.anxietyUp(2);
             }
-            else if (choice > 4 ){
+            else if (choice > 15 ){
                 System.out.println("Answer this question for a promotion:");
                 if(promotion(player)){
                     System.out.println("You got a promotion!");
