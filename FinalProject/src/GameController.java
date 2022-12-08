@@ -168,12 +168,18 @@ public class GameController {
         }
         if(count == 0 ){
             System.out.println("You suck but we're short on staff so you're hired!");
+            //TODO MAKE JUNIOR RANK-----------------------------
+            //TODO DISPLAY JUNIOR RANK---------------------------
         }
         else if (count == numQuestions - (numQuestions/2)){
             System.out.println("You are absolutely outstanding! You're hired!");
+            //TODO MAKE JUNIOR RANK-----------------------------
+            //TODO DISPLAY JUNIOR RANK---------------------------
         }
         else{
             System.out.println("You passed! You're hired!");
+            //TODO MAKE JUNIOR RANK-----------------------------
+            //TODO DISPLAY JUNIOR RANK---------------------------
         }
     }
 
@@ -210,7 +216,8 @@ public class GameController {
                 System.out.println("Answer this question for a promotion:");
                 if(promotion(player)){
                     System.out.println("You got a promotion!");
-                    //TODO you are now insert rank--------------------------------------------------------------------------------------
+                    //TODO MAKE HIGHER RANK-----------------------------
+                    //TODO DISPLAY HIGHER RANK---------------------------
 //                    if(player.rank.equals("junior")){
 //
 //                    }

@@ -41,9 +41,9 @@ public class Programmer {
         anxiety--;
     }
 
-    public void rankUp(){ //TODO MAKE ENUM!!!!---------------------------------------------------------------------------------
+    public void rankUp(){ //TODO ENUM STUFF!!!!---------------------------------------------------------------------------------
         if(rank == null){
-            rank = "junior developer";
+            rank = "Junior";
         }
     }
 
