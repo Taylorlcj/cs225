@@ -12,5 +12,5 @@
 //
 //***********************************************
 public enum Rank{
-    Junior, Senior, CEO;
+    STUDENT, JUNIOR, SENIOR, CEO;
 }

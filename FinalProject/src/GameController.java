@@ -30,21 +30,23 @@ public class GameController {
         System.out.println();
         Programmer player  = createPlayer();
         System.out.println("Welcome to the simulator, " + player.getName() + "!\n");
-//        System.out.println("*Wakes up in the morning*");
-//        System.out.println("Hey, I want to be a software developer!");
-//        System.out.println("I'm going to go to Best Buy and pick out which computer I want to begin my journey with!\n");
-//        player.setComputer(pickComputer(computers));
-//        System.out.println("\nYou go home and open your new computer!");
-//        System.out.print("Your computer displays: ");
-//        player.getComputer().printMessage();
+        System.out.println("*Wakes up in the morning*");
+        System.out.println("Hey, I want to be a software developer!");
+        System.out.println("I'm going to go to Best Buy and pick out which computer I want to begin my journey with!\n");
+        player.setComputer(pickComputer(computers));
+        System.out.println("\nYou go home and open your new computer!");
+        System.out.print("Your computer displays: ");
+        player.getComputer().printMessage();
         System.out.println("Great! Now that I have a computer, all I need is to pick my programming language to code in!\n");
         ArrayList<Language> languages = Language.loadLanguages("ProgrammingLanguage.txt");
         player.setLanguage(pickLanguage(languages));
-//        player.setPaidCourse(pickCourse());
-//        teachLesson(player);
-//        System.out.println("\nI'm finally ready for my interview");
-//        System.out.println("**Goes to interview**\n");
-//        giveInterview(player);
+        player.setPaidCourse(pickCourse());
+        System.out.println("Let's get ready to learn!\n");
+        teachLesson(player);
+        System.out.println("\nI'm finally ready for my interview");
+        System.out.println("**Goes to interview**\n");
+        giveInterview(player);
+        System.out.println("Your work-life has started! You will now receive Yearly reviews!\n");
         ArrayList<String> reviews = readReviews("Reviews.txt");
         workLife(player, reviews);
     }
@@ -63,7 +65,7 @@ public class GameController {
         if(name.trim().isEmpty()){
             name = "Anonymous";
         }
-        return new Programmer(name,"student", 0);
+        return new Programmer(name, 0);
     }
 
     public static Computer pickComputer(ArrayList<Computer> computers){
@@ -113,23 +115,31 @@ public class GameController {
         System.out.println("1. Youtube/Free Courses");
         System.out.println("2. Udemy/Paid Courses");
         System.out.println("Enter one of the above numbers!");
-        choice = scanner.nextInt();
-        if(choice == 1){
-            System.out.println("I'll air on the safe side and go for the free courses");
-            return false;
-        } else if (choice == 2) {
-            System.out.println("I'm all in! It's only money!\n");
-            return true;
+
+        try {
+            choice = scanner.nextInt();
+            if(choice == 1){
+                System.out.println("\nI'll air on the safe side and go for the free courses");
+                return false;
+            } else if (choice == 2) {
+                System.out.println("\nI'm all in! It's only money!");
+                return true;
+            }
+            else{
+                System.out.println("\nI'll air on the safe side and go for the free courses");
+                return false;
+            }
         }
-        else{
-            System.out.println("I'll air on the safe side and go for the free courses");
+        catch(Exception e){
+            System.out.println("\nI'll air on the safe side and go for the free courses");
             return false;
         }
+
     }
 
     public static void teachLesson(Programmer player){
         int numQuestions = player.getLanguage().getQuestions().size();
-        for (int i = 0; i < numQuestions / 2; i++){
+        for (int i = 0; i < 2; i++){
             Question q = player.getLanguage().getQuestions().get(i);
             askQuestionLesson(q, player.getPaidCourse());
         }
@@ -160,27 +170,25 @@ public class GameController {
     public static void giveInterview(Programmer player){
         int count = 0;
         int numQuestions = player.getLanguage().getQuestions().size();
-        for(int i = numQuestions / 2; i < numQuestions; i++){
+        for(int i = 2; i < 4; i++){
             Question q = player.getLanguage().getQuestions().get(i);
             if(askQuestionInterview(q)){
                 count++;
             }
         }
         if(count == 0 ){
-            System.out.println("You suck but we're short on staff so you're hired!");
-            //TODO MAKE JUNIOR RANK-----------------------------
-            //TODO DISPLAY JUNIOR RANK---------------------------
+            System.out.println("\nYou suck but we're short on staff so you're hired!");
+            player.rankUp();
         }
         else if (count == numQuestions - (numQuestions/2)){
-            System.out.println("You are absolutely outstanding! You're hired!");
-            //TODO MAKE JUNIOR RANK-----------------------------
-            //TODO DISPLAY JUNIOR RANK---------------------------
+            System.out.println("\nYou are absolutely outstanding! You're hired!");
+            player.rankUp();
         }
         else{
-            System.out.println("You passed! You're hired!");
-            //TODO MAKE JUNIOR RANK-----------------------------
-            //TODO DISPLAY JUNIOR RANK---------------------------
+            System.out.println("\nYou passed! You're hired!");
+            player.rankUp();
         }
+        System.out.println("Congrats you are now a " + player.getRank() + " developer!");
     }
 
     public static ArrayList<String> readReviews(String fileName){
@@ -193,7 +201,7 @@ public class GameController {
             }
         }
         catch(FileNotFoundException e){
-            System.out.println("You broke my simulator! That file doesn't exist dang it!");
+            System.out.println("\nYou broke my simulator! That file doesn't exist dang it!");
         }
         return reviews;
     }
@@ -206,21 +214,18 @@ public class GameController {
             choice = (int) (Math.random() * reviews.size());
             System.out.println(reviews.get(choice));
             if(choice == 0){
-                System.out.println("Sorry the game is over!");
+                System.out.println("\nGAME OVER!!!");
                 break;
             }
             else if (choice <= 7){
                 player.anxietyUp(2);
             }
             else if (choice > 15 ){
-                System.out.println("Answer this question for a promotion:");
+                System.out.println("\nAnswer this question for a promotion:");
                 if(promotion(player)){
-                    System.out.println("You got a promotion!");
-                    //TODO MAKE HIGHER RANK-----------------------------
-                    //TODO DISPLAY HIGHER RANK---------------------------
-//                    if(player.rank.equals("junior")){
-//
-//                    }
+                    System.out.println("\nYou got a promotion!");
+                    player.rankUp();
+                    System.out.println("Congrats you now have a " + player.getRank() + " position!");
                     player.anxietyDown();
                 }
                 else{
@@ -228,6 +233,17 @@ public class GameController {
                     player.anxietyUp(1);
                 }
 
+            }
+            if(player.getAnxiety() >= 9){
+                System.out.println("\nYou got too anxious so you quit your job to join the circus!");
+                System.out.println("GAME OVER!");
+                break;
+            }
+
+            if(player.getRank() == Rank.CEO){
+                System.out.println("\nYou are now the boss and have all the money and have found the key to happiness!!");
+                System.out.println("YOU WIN!");
+                break;
             }
 
             System.out.println("Continue to next year? [Press Enter]");
@@ -237,8 +253,14 @@ public class GameController {
     }
 
     public static boolean promotion(Programmer player){
-        int choice = (int) (Math.random() * player.getLanguage().getQuestions().size());
+        int choice = 0;
 
+        if(player.getRank() == Rank.JUNIOR){
+            choice = 4;
+        }
+        else{
+            choice = 5;
+        }
         return askQuestionInterview(player.getLanguage().getQuestions().get(choice));
     }
 

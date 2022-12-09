@@ -19,7 +19,7 @@
 */
 public class Programmer {
     private String name;
-    private String rank;
+    private Rank rank;
     private Computer computer;
     private Language language;
     private int anxiety;
@@ -27,9 +27,9 @@ public class Programmer {
 
 
 
-    public Programmer(String n, String r, int a){
+    public Programmer(String n, int a){
         name = n;
-        rank = r;
+        rank = Rank.STUDENT;
         anxiety = a;
     }
 
@@ -41,9 +41,15 @@ public class Programmer {
         anxiety--;
     }
 
-    public void rankUp(){ //TODO ENUM STUFF!!!!---------------------------------------------------------------------------------
-        if(rank == null){
-            rank = "Junior";
+    public void rankUp(){
+        if(rank == Rank.STUDENT){
+            rank = Rank.JUNIOR;
+        }
+        else if (rank == Rank.JUNIOR){
+            rank = Rank.SENIOR;
+        }
+        else if (rank == Rank.SENIOR){
+            rank = Rank.CEO;
         }
     }
 
@@ -75,7 +81,11 @@ public class Programmer {
     public boolean getPaidCourse(){
         return paidCourse;
     }
-    public String getRank() {
+    public Rank getRank() {
         return rank;
+    }
+
+    public int getAnxiety() {
+        return anxiety;
     }
 }
