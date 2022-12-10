@@ -6,12 +6,12 @@
  Purpose:This class allows the game to start and end
  Attributes:
 
- Method: (Static)+main(String[]):void
-         (Static)+simulate():void
-         (Static)+gameOver():boolean
-         (Static)+createPlayer():Programmer
-         (Static)+pickComputer(computers: ArrayList<Computer>):Computer
-         (Static)+pickLanguage(languages:ArrayList<Language>):Language
+ Method:
+         +simulate():void
+         +gameOver():boolean
+         +createPlayer():Programmer
+         +pickComputer(computers: ArrayList<Computer>):Computer
+         +pickLanguage(languages:ArrayList<Language>):Language
 
 ********************************************************
 */
@@ -25,40 +25,31 @@ import java.util.Scanner;
 
 
 public class GameController {
-    public static void main(String[] args) {
-        ArrayList<Computer> computers = Computer.loadComputers("ComputerTypes.txt");
+    private Programmer player;
+    public void simulate() {
         System.out.println();
-        Programmer player  = createPlayer();
-        System.out.println("Welcome to the simulator, " + player.getName() + "!\n");
-        System.out.println("*Wakes up in the morning*");
-        System.out.println("Hey, I want to be a software developer!");
-        System.out.println("I'm going to go to Best Buy and pick out which computer I want to begin my journey with!\n");
-        player.setComputer(pickComputer(computers));
+        player  = createPlayer();
+        printIntro();
+        player.setComputer(pickComputer(loadComputers("ComputerTypes.txt")));
         System.out.println("\nYou go home and open your new computer!");
         System.out.print("Your computer displays: ");
         player.getComputer().printMessage();
         System.out.println("Great! Now that I have a computer, all I need is to pick my programming language to code in!\n");
-        ArrayList<Language> languages = Language.loadLanguages("ProgrammingLanguage.txt");
-        player.setLanguage(pickLanguage(languages));
+        player.setLanguage(pickLanguage(loadLanguages("ProgrammingLanguage.txt")));
         player.setPaidCourse(pickCourse());
-        System.out.println("Let's get ready to learn!\n");
-        teachLesson(player);
-        System.out.println("\nI'm finally ready for my interview");
-        System.out.println("**Goes to interview**\n");
-        giveInterview(player);
+        teachLesson();
+        giveInterview();
         System.out.println("Your work-life has started! You will now receive Yearly reviews!\n");
-        ArrayList<String> reviews = readReviews("Reviews.txt");
-        workLife(player, reviews);
-    }
-    public static void simulate(){
-
+        workLife(readReviews("Reviews.txt"));
     }
 
-    public static boolean gameOver(){
-        return true;
+    public void printIntro(){
+        System.out.println("Welcome to the simulator, " + player.getName() + "!\n");
+        System.out.println("*Wakes up in the morning*");
+        System.out.println("Hey, I want to be a software developer!");
     }
 
-    public static Programmer createPlayer(){
+    public Programmer createPlayer(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         String name = scanner.nextLine();
@@ -68,8 +59,9 @@ public class GameController {
         return new Programmer(name, 0);
     }
 
-    public static Computer pickComputer(ArrayList<Computer> computers){
+    public Computer pickComputer(ArrayList<Computer> computers){
         int choice = 0;
+        System.out.println("I'm going to go to Best Buy and pick out which computer I want to begin my journey with!\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which computer do I wanna choose?");
         for (int i = 0; i < computers.size(); i++){
@@ -88,7 +80,7 @@ public class GameController {
         return computers.get(choice - 1);
     }
 
-    public static Language pickLanguage(ArrayList<Language> languages){
+    public Language pickLanguage(ArrayList<Language> languages){
         int choice = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which language do I wanna choose?");
@@ -108,7 +100,7 @@ public class GameController {
         return languages.get(choice - 1);
     }
 
-    public static boolean pickCourse(){
+    public boolean pickCourse(){
         int choice = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nNow what kind of learning style should I pick???");
@@ -137,7 +129,8 @@ public class GameController {
 
     }
 
-    public static void teachLesson(Programmer player){
+    public void teachLesson(){
+        System.out.println("Let's get ready to learn!\n");
         int numQuestions = player.getLanguage().getQuestions().size();
         for (int i = 0; i < 2; i++){
             Question q = player.getLanguage().getQuestions().get(i);
@@ -146,7 +139,7 @@ public class GameController {
 
     }
 
-    public static void askQuestionLesson(Question q, boolean paid){
+    public void askQuestionLesson(Question q, boolean paid){
         if (paid){
             System.out.println(q.getLesson());
         }
@@ -167,8 +160,10 @@ public class GameController {
         return q.checkAnswer(ans);
     }
 
-    public static void giveInterview(Programmer player){
+    public void giveInterview(){
         int count = 0;
+        System.out.println("\nI'm finally ready for my interview");
+        System.out.println("**Goes to interview**\n");
         int numQuestions = player.getLanguage().getQuestions().size();
         for(int i = 2; i < 4; i++){
             Question q = player.getLanguage().getQuestions().get(i);
@@ -191,7 +186,7 @@ public class GameController {
         System.out.println("Congrats you are now a " + player.getRank() + " developer!");
     }
 
-    public static ArrayList<String> readReviews(String fileName){
+    public ArrayList<String> readReviews(String fileName){
         ArrayList<String> reviews = new ArrayList<String>();
         File file = new File(fileName);
         try (Scanner input = new Scanner(file)) {
@@ -206,7 +201,7 @@ public class GameController {
         return reviews;
     }
 
-    public static void workLife(Programmer player, ArrayList<String> reviews){
+    public void workLife( ArrayList<String> reviews){
         int choice;
         Scanner scanner = new Scanner(System.in);
 
@@ -222,7 +217,7 @@ public class GameController {
             }
             else if (choice > 15 ){
                 System.out.println("\nAnswer this question for a promotion:");
-                if(promotion(player)){
+                if(promotion()){
                     System.out.println("\nYou got a promotion!");
                     player.rankUp();
                     System.out.println("Congrats you now have a " + player.getRank() + " position!");
@@ -249,10 +244,9 @@ public class GameController {
             System.out.println("Continue to next year? [Press Enter]");
             scanner.nextLine();
         }
-
     }
 
-    public static boolean promotion(Programmer player){
+    public boolean promotion(){
         int choice = 0;
 
         if(player.getRank() == Rank.JUNIOR){
@@ -262,6 +256,92 @@ public class GameController {
             choice = 5;
         }
         return askQuestionInterview(player.getLanguage().getQuestions().get(choice));
+    }
+
+    public ArrayList<Computer> loadComputers(String fileName){
+        ArrayList<Computer> computers = new ArrayList<Computer>();
+        File file = new File(fileName);
+        try (Scanner input = new Scanner(file)) {
+            while(input.hasNextLine()){
+                String name = input.nextLine();
+                String model = input.nextLine();
+                computers.add(createComputer(name, model));
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println("You broke my simulator! That file doesn't exist dangit!");
+        }
+        return computers;
+    }
+    public Computer createComputer(String name, String model){
+        if(name.toLowerCase().equals("mac")){
+            return new Mac(model);
+        }
+        else if (name.toLowerCase().equals("windows")) {
+            return new Windows(model);
+        }
+        else if (name.toLowerCase().equals("chrome")) {
+            return new Chrome(model);
+        }
+        else{
+            return new Linux(model);
+        }
+    }
+    public ArrayList<Language> loadLanguages(String fileName){
+        ArrayList<Language> languages = new ArrayList<Language>();
+        File file = new File(fileName);
+        try (Scanner input = new Scanner(file)) {
+
+            //get all the languages
+            while(input.hasNextLine()){
+                String name = input.nextLine();
+                String ide = input.nextLine();
+                ArrayList<Question> questions = new ArrayList<Question>();
+                //get all the questions
+                while (input.hasNextLine()){
+                    String type = input.nextLine();
+                    if(type.equals("fill-in-the-blank")){
+                        String lesson = input.nextLine();
+                        String desc = input.nextLine();
+                        String state = input.nextLine();
+                        String ans = input.nextLine();
+                        questions.add(createFillInTheBlank(desc, state, ans, lesson));
+                    }
+                    else if(type.equals("multiple-choice")) {
+                        String lesson = input.nextLine();
+                        String quest = input.nextLine();
+                        String[] ch = {input.nextLine(),input.nextLine(),input.nextLine()};
+                        String ans = input.nextLine();
+                        questions.add(createMultipleChoice(quest, ch, ans, lesson));
+                    }
+                    else{
+                        break;
+                    }
+                }
+                languages.add(new Language(name, questions, ide));
+            }
+        }
+        catch(FileNotFoundException e){
+            System.out.println("You broke my simulator! That file doesn't exist dang it!");
+        }
+        return languages;
+    }
+
+    public Question createMultipleChoice(String quest, String[] ch, String ans, String l){
+        MultipleChoice q = new MultipleChoice();
+        q.setQuestion(quest);
+        q.setChoices(ch);
+        q.setAnswer(ans);
+        q.setLesson(l);
+        return q;
+    }
+    public Question createFillInTheBlank(String desc, String state, String ans, String l){
+        FillInTheBlank q = new FillInTheBlank();
+        q.setDescription(desc);
+        q.setStatement(state);
+        q.setAnswer(ans);
+        q.setLesson(l);
+        return q;
     }
 
 }

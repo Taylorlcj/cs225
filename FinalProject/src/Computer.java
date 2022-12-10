@@ -35,6 +35,7 @@ public class Computer{
     }
 
     public void printMessage(){
+
         System.out.println("Wow, how did you end up not picking from the only possible options???");
     }
 
@@ -42,33 +43,4 @@ public class Computer{
         return name + ": " + model;
     }
 
-    public static ArrayList<Computer> loadComputers(String fileName){
-        ArrayList<Computer> computers = new ArrayList<Computer>();
-        File file = new File(fileName);
-        try (Scanner input = new Scanner(file)) {
-            while(input.hasNextLine()){
-                String name = input.nextLine();
-                String model = input.nextLine();
-                computers.add(createComputer(name, model));
-            }
-        }
-        catch(FileNotFoundException e){
-            System.out.println("You broke my simulator! That file doesn't exist dangit!");
-        }
-        return computers;
-    }
-    public static Computer createComputer(String name, String model){
-        if(name.toLowerCase().equals("mac")){
-            return new Mac(model);
-        }
-        else if (name.toLowerCase().equals("windows")) {
-            return new Windows(model);
-        }
-        else if (name.toLowerCase().equals("chrome")) {
-            return new Chrome(model);
-        }
-        else{
-            return new Linux(model);
-        }
-    }
 }
