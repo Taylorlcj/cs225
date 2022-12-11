@@ -230,7 +230,7 @@ public class GameController {
                 player.anxietyUp(2);
             }
             else if (choice > 15 ){
-                System.out.println("\nAnswer this question for a promotion:");
+                System.out.println("Answer this question for a promotion:\n");
                 if(promotion()){
                     System.out.println("\nYou got a promotion!");
                     player.rankUp();
