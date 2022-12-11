@@ -11,16 +11,8 @@
          +purchaseMethod():void
          +printMessage():void
          +toString():String
-         (Static)+loadComputers(fileName: String):ArrayList<Computer>
-         (Static)+createComputers(name: String, model: String): Computer
 ********************************************************
 */
-
-//imports
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Computer{
     private String name;

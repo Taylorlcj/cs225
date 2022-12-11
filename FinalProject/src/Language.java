@@ -8,22 +8,13 @@
              -questions: ArrayList<Question>
              -ide: String
 
- Method: <<constructor>>Language(String n, String[] q, String[] a, String i)
-         +checkStatement(question: int):boolean,
-         +askQuestion(question: int):void
-         +printIdeInfo():string
+ Method: <<constructor>>Language(n: String, q: String[], a: String[], i: String)
          +toString():String
-         (Static)+loadLanguages(filename: String):ArrayList<Languages>
-         (Static)+createMultipleChoice(quest: String, ch: String[], ans: String):Question
-         (Static)+createFillInTheBlank(desc: String, state: String, ans: String):Question
 ********************************************************
 */
 
 // **  imports  **
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Language {
 
@@ -40,18 +31,6 @@ public class Language {
     }
 
     // **  Methods  **
-    public boolean checkStatement(int question){
-        return true;
-    }
-
-    public void askQuestion(int question){
-
-    }
-
-    public String printIdeInfo(){
-        return null;
-    }
-
     public String toString(){
         return name + " uses the ide " + ide ;
     }

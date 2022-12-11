@@ -7,11 +7,24 @@
  Attributes:
 
  Method:
-         +simulate():void
-         +gameOver():boolean
-         +createPlayer():Programmer
-         +pickComputer(computers: ArrayList<Computer>):Computer
-         +pickLanguage(languages:ArrayList<Language>):Language
+            +simulate():void
+            +createPlayer():Programmer
+            +pickComputer(computers: ArrayList<Computer>):Computer
+            +pickLanguage(languages:ArrayList<Language>):Language
+            +loadComputers(fileName: String):ArrayList<Computer>
+            +createComputers(name: String, model: String): Computer
+            +loadLanguages(filename: String):ArrayList<Languages>
+            +createMultipleChoice(quest: String, ch: String[], ans: String, l: String):Question
+            +createFillInTheBlank(desc: String, state: String, ans: String, l: String):Question
+            +printIntro():void
+            +pickCourse():boolean
+            +teachLesson():void
+            +askQuestionLesson(q: Question, paid: boolean):void
+            +askQuestionInterview(q: Question):boolean
+            +giveInterview():void
+            +readReviews(fileName: String):ArrayList<String>
+            +workLife(reviews: ArrayList<String>):void
+            +promotion():boolean
 
 ********************************************************
 */
@@ -26,6 +39,7 @@ import java.util.Scanner;
 
 public class GameController {
     private Programmer player;
+
     public void simulate() {
         System.out.println();
         player  = createPlayer();
@@ -153,7 +167,7 @@ public class GameController {
         System.out.println("Great Job!!!\n");
     }
 
-    public static boolean askQuestionInterview(Question q){
+    public boolean askQuestionInterview(Question q){
         q.printQuestion();
         Scanner scanner = new Scanner(System.in);
         String ans = scanner.nextLine();
@@ -201,7 +215,7 @@ public class GameController {
         return reviews;
     }
 
-    public void workLife( ArrayList<String> reviews){
+    public void workLife(ArrayList<String> reviews){
         int choice;
         Scanner scanner = new Scanner(System.in);
 

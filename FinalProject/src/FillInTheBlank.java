@@ -4,7 +4,6 @@
  Author: Taylor Jensen
  Date Created: Nov 18, 2022
  Purpose: Classifies all the questions that are FilL in the blank
-
  Attributes:-description: String
             -statement: String
 
@@ -20,7 +19,6 @@ public class FillInTheBlank extends Question{
         System.out.println(description);
         System.out.println(statement);
     }
-
 
     //Getter and Setters
     public void setDescription(String desc){

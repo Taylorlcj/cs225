@@ -7,7 +7,7 @@
  Attributes: -answer: String
 
  Method: +printQuestion(): void
-         +checkAnswer(ans:String): boolean
+         +checkAnswer(ans: String): boolean
 
 ********************************************************
 */

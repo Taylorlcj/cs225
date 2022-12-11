@@ -5,7 +5,7 @@
  Date Created: Nov 6, 2022
  Purpose: creates the Computer subclass which prints a message when the Macbook is opened for the first time
  Attributes:
- Method: <<constructor>>Mac(String name, String model)
+ Method: <<constructor>>Mac(model: String)
          +printMessage():void
 ********************************************************
 */

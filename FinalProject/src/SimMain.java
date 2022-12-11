@@ -3,11 +3,9 @@
  Class: SimMain
  Author: Taylor Jensen
  Date Created: Dec 8, 2022
- Purpose:This class allows the game to start and end
+ Purpose: This class runs the game
  Attributes:
-
- Method:
-
+ Method: +main(args: String[]): void
 
 ********************************************************
 */

@@ -5,7 +5,7 @@
  Date Created: Nov 6, 2022
  Purpose: creates the Computer subclass which prints a message when the Chromebook is opened for the first time
  Attributes:
- Method: <<constructor>>Chrome(String name, String model)
+ Method: <<constructor>>Chrome(model: String)
          +printMessage():void
 ********************************************************
 */

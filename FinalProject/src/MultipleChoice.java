@@ -4,7 +4,7 @@
  Author: Taylor Jensen
  Date Created: Nov 18, 2022
  Purpose: Classifies all the questions that are multiple choice
- Attributes:-question: string
+ Attributes:-question: String
             -choices: String[]
 
  Method: +printQuestion(): void

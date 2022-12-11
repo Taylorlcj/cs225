@@ -9,12 +9,12 @@
              -computer:Computer
              -language:Language
              -anxiety:int
+             -paidCourse:boolean
 
- Method: <<constructor>>Programmer(String n, String r, int a)
+ Method: <<constructor>>Programmer(n: String, a: int)
          +anxietyUp(value: int):void
-         +anxietyDown(value: int):void
-         +decreaseBudget(amount: int):void
-         +printInfo():void
+         +anxietyDown():void
+         +rankUp():void
 ********************************************************
 */
 public class Programmer {
@@ -26,7 +26,7 @@ public class Programmer {
     private boolean paidCourse;
 
 
-
+    //Methods
     public Programmer(String n, int a){
         name = n;
         rank = Rank.STUDENT;
@@ -51,10 +51,6 @@ public class Programmer {
         else if (rank == Rank.SENIOR){
             rank = Rank.CEO;
         }
-    }
-
-    public void printInfo(){
-
     }
 
 
@@ -84,7 +80,6 @@ public class Programmer {
     public Rank getRank() {
         return rank;
     }
-
     public int getAnxiety() {
         return anxiety;
     }

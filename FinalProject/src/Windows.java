@@ -5,7 +5,7 @@
  Date Created: Nov 6, 2022
  Purpose: creates the Computer subclass which prints a message when the Windows laptop is opened for the first time
  Attributes:
- Method: <<constructor>>Windows(String name, String model)
+ Method: <<constructor>>Windows(model: String)
          +printMessage():void
 ********************************************************
 */

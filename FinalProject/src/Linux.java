@@ -5,7 +5,7 @@
  Date Created: Nov 6, 2022
  Purpose: creates the Computer subclass which prints a message when the Linux computer is opened for the first time
  Attributes:
- Method: <<constructor>>Linux(String name, String model)
+ Method: <<constructor>>Linux(model: String)
          +printMessage():void
 ********************************************************
 */
